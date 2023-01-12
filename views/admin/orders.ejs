@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="/stylesheets/orders.css">
+
+<div class="table">
+    <div class="tableHeader">
+        <div class="tableHeaderContent">
+            IMAGE
+        </div>
+        <div class="tableHeaderContent">
+            PRODUCT ID
+        </div>
+        <div class="tableHeaderContent">
+            QUANTITY
+        </div>
+        <div class="tableHeaderContent">
+            PRICE
+        </div>
+        <div class="tableHeaderContent">
+            STATUS
+        </div>
+    </div>
+
+    <% data.forEach(function(data){ if(data.status=='cancelled' ||data.status=='returned' ){ statusColor='fontRed' ; }
+        else if(data.status=='delivered' ){ statusColor='fontGreen' ; } else { statusColor='fontBlue' ; } %>
+        <div class="tableRow" onclick="tableRowClick('<%= data._id %><%= data.orderId %>')">
+            <div class="tableContent">
+                <div class="tableContentImage"
+                    style="background-image: url('../images/products/<%= data._id %>0.jpg');">
+
+                </div>
+            </div>
+            <div class="tableContent">
+                <%= data._id %>
+            </div>
+            <div class="tableContent">
+                <%= data.quantity%>
+            </div>
+            <div class="tableContent">
+                Rs. <%= data.price %>
+            </div>
+            <div class="tableContent">
+                <div class="fontGreen fontBold orderStatus<%= data.orderId %> <%= statusColor %>">
+                    <%= data.status.toUpperCase() %>
+                </div>
+            </div>
+        </div>
+        <% if(data.status!='cancelled' &&data.status!='delivered' ){ %>
+            <div class="tableRow" style="border: 0;background-color: rgb(230, 230, 230);display: none;"
+                id="<%= data._id %><%= data.orderId %>">
+                <div class="tableContent">
+                    <% if(data.status=='placed' ) { %>
+                        <a href="productShipped?orderId=<%= data.orderId %>&productId=<%= data._id %>">
+                            <div class="ButtonFixed blueButtonFixed">
+                                SHIPPED
+                            </div>
+                        </a>
+                        <% } else if(data.status=='shipped' ) { %>
+                            <a href="productDelivered?orderId=<%= data.orderId %>&productId=<%= data._id %>">
+                                <div class="ButtonFixed greenButtonFixed">
+                                    DELIVERED
+                                </div>
+                            </a>
+                            <% } %>
+                </div>
+                <div class="tableContent">
+                    <% if(data.status!='returned' ){ %>
+                        <a href="cancelOrderProduct?orderId=<%= data.orderId %>&productId=<%= data._id %>">
+                            <div class="ButtonFixed redButtonFixed cancelBtn<%= data.orderId %>">
+                                <!-- onclick="cancelOrderClicked('<%= data._id %>','<%= data.orderId %>')">-->
+                                CANCEL
+                            </div>
+                        </a>
+                        <% } %>
+                </div>
+                <div class="tableContent">
+                    SIZE:&nbsp;
+                    <div class="fontBlue fontBold">
+                        <%= data.size %>
+                    </div>
+                </div>
+                <div class="tableContent">
+                    ADDRESS: &nbsp;
+                    <%= data.address.fullName %>,<%= data.address.houseNumber %>,<%= data.address.district %>,
+                                <br>pin: <%= data.address.pincode %>,
+                                    mobile: <%= data.address.mobileNumber %>
+                </div>
+            </div>
+            <% } %>
+
+                <% }) %>
+
+</div>
+<br><br><br><br><br>
+<script>
+
+    let xhr = new XMLHttpRequest();
+    function cancelOrderClicked(productId, orderId) {
+        xhr.open('GET', 'cancelOrderProduct?orderId=' + orderId + '&productId=' + productId, true);
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                if (data) {
+                    let statusViewer = document.getElementsByClassName('orderStatus' + orderId);
+                    let cancelBtn = document.getElementsByClassName('cancelBtn' + orderId);
+                    for (i = 0; i < statusViewer.length; i++) {
+                        statusViewer[i].innerHTML = 'CANCELLED';
+                        statusViewer[i].style.color = 'red';
+                        cancelBtn[i].style.display = 'none';
+                    }
+                    document.getElementById(productId + orderId).style.display = 'none';
+                }
+            }
+        }
+    }
+
+    function productShipped(orderId) {
+        xhr.open('GET', 'productShipped?id=' + orderId, true);
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                if (data) {
+
+                }
+            }
+        }
+    }
+    i = false;
+    currentId = false;
+    function tableRowClick(id) {
+        if (i) {
+            document.getElementById(id).style.display = 'none';
+            i = false;
+            if (currentId != false) {
+                document.getElementById(currentId).style.display = 'none';
+            }
+        }
+        else {
+            document.getElementById(id).style.display = '';
+            i = true;
+        }
+        currentId = id;
+    }
+</script>

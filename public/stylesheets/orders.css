@@ -1,0 +1,38 @@
+.orders_1{
+    width: fit-content;
+    max-width: 98vw;
+    height: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+    .orders_1_1{
+        width: fit-content;
+        height: 160px;
+        border: 1px solid gray;
+        margin: auto;
+        padding: 10px;
+        border-radius: 5px;
+    }
+        .orders_1_1_1{
+            width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 98vw;
+            gap: 10px;
+        }
+            .orders_1_1_1_1{
+                width: fit-content;
+                height: fit-content;
+                font-size: 17px;
+            }
+            .orders_1_1_1_2{
+                width: fit-content;
+                height: fit-content;
+                font-size: 17px;
+                font-weight: bold;
+            }

@@ -1,0 +1,120 @@
+.cosect_1 {
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+    .cosect_1_1{
+        height: fit-content;
+        width: fit-content;
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+    }
+    .cosect_1_2{
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+        .cosect_1_2_1{
+            width: fit-content;
+            height: fit-content;
+            padding: 5px 15px 5px 15px;
+            border: 1px solid #0197A6;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #0197A6;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .cosect_1_2_1:hover{
+            background-color: #0197A6;
+            color: white;
+        }
+        .cosect_1_2_1:active{
+            opacity: 0.5;
+        }
+    .cosect_1_3{
+        width: fit-content;
+        height: fit-content;
+        padding: 5px 15px 5px 15px;
+        border: 1px solid #0197A6;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        background-color: #0197A6;
+        transition: all 0.2s;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    .cosect_1_3:hover{
+        transform: scale(1.1);
+    }
+    .cosect_1_3:active{
+        opacity: 0.5;
+    }
+    .cosect_1_4{
+        width: 400px;
+        height: max-content;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 5px;
+        margin: auto;
+        margin-top: 10px;
+        overflow: hidden;
+        height: 0;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+    .cosect_1_4_1{
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: fit-content;
+        margin-top: 5px;
+    }
+        .cosect_1_4_1_1{
+            height: fit-content;
+            width: fit-content;
+            font-size: 15px;
+        }
+        .cosect_1_4_1_2{
+            width: fit-content;
+            height: fit-content;
+        }
+            .cosect_1_4_1_2_1{
+                width: 300px;
+                height: 30px;
+                padding-left: 10px;
+            }
+    .cosect_1_5{
+        border: 1px solid gray;
+        padding: 5px;
+        width: fit-content;
+        min-width: 300px;
+        margin-top: 10px;
+        overflow: hidden;
+        border-radius: 5px;
+        height: 0;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+        .cosect_1_5_1{
+            width: fit-content;
+            height: fit-content;
+            font-size: 15px;
+        }
+        .cosect_1_5_2{
+            width: fit-content;
+            height: fit-content;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 5px;
+        }

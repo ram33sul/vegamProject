@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/report.css">
+<body>
+    <div class="report_1">
+        <div class="report_1_1">
+            SALES REPORT
+        </div>
+        <div class="report_1_2">
+            <%= data.fromDate %> to <%= data.toDate %>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total Products Sold:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalProducts %>
+            </div>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total Quantities Sold:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalQuantity %>
+            </div>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total Amount:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalPrice %>
+            </div>
+        </div>
+        <div class="report_1_4">
+            <div class="report_1_4_1">
+                <div class="report_1_4_1_1">
+                    PRODUCT
+                </div>
+                <div class="report_1_4_1_2">
+                    QUANTITY
+                </div>
+                <div class="report_1_4_1_2">
+                    PRICE
+                </div>
+            </div>
+            <% data.data.forEach((data) => { %>
+            <div class="report_1_4_2">
+                <div class="report_1_4_2_1">
+                    <%= data._id %>
+                </div>
+                <div class="report_1_4_2_2">
+                    <%= data.quantity %>
+                </div>
+                <div class="report_1_4_2_2">
+                    <%= data.price %>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <a href="printReportPdf">
+        <div class="ButtonFixed greenButtonFixed marginAuto">PRINT PDF</div>
+        </a>
+        <a href="printReportExcel">
+            <div class="ButtonFixed greenButtonFixed marginAuto">PRINT EXCEL</div>
+        </a>
+        </a>
+    </div>
+</body>

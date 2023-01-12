@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<link rel="stylesheet" href="/stylesheets/coupons.css">
+
+<div class="dash_1">
+    <div class="dash_1_1">
+        <a href="dashboard">
+        <div class="dash_1_1_1">
+            INDEX
+        </div>
+        </a>
+        <a href="dashboardReport">
+        <div class="dash_1_1_1">
+            REPORT
+        </div>
+        </a>
+        <a href="dashboardCoupons">
+            <div class="dash_1_1_1" style="background-color: white;color: green;">
+                COUPONS
+            </div>
+        </a>
+        <a href="dashboardOffers">
+            <div class="dash_1_1_1">
+                OFFERS
+            </div>
+            </a>
+    </div>
+    <div class="dash_1_2">
+
+
+        <a href="addCoupons">
+            <div class="greenButton" style="margin:auto;margin-top: 50px;">
+                ADD NEW COUPON
+            </div>
+        </a>
+        <div class="table">
+            <div class="tableHeader"  style="width: 1000px;">
+                <div class="tableHeaderContent"  style="width: 20%;">
+                    NAME
+                </div>
+                <div class="tableHeaderContent"  style="width: 20%;">
+                    VALUE
+                </div>
+                <div class="tableHeaderContent"  style="width: 20%;">
+                    MIN-SPENT
+                </div>
+                <div class="tableHeaderContent"  style="width: 20%;">
+                    STATUS
+                </div>
+                <div class="tableHeaderContent" style="width: 20%;">
+                    ACTION
+                </div>
+            </div>
+            <% data.forEach((data)=> {
+                let status;
+                if(data.status){
+                status = 'ACTIVE';
+                } else {
+                status = 'NON-ACTIVE';
+                }; %>
+                <div class="tableRow">
+                    <div class="tableContent" style="width: 20%;">
+                        <%= data.name %>
+                    </div>
+                    <div class="tableContent" style="width: 20%;">
+                        <%= data.value %>
+                    </div>
+                    <div class="tableContent" style="width: 20%;">
+                        <%= data.minSpent%>
+                    </div>
+                    <div class="tableContent" style="width: 20%;">
+                        <%= status %>
+                    </div>
+                    <% if(data.status){ %>
+                        <a href="blockCoupon?id=<%= data._id %>">
+                            <div class="ButtonFixed redButtonFixed" style="margin-left: 60px;">
+                                BLOCK
+                            </div>
+                        </a>
+                        <% } else { %>
+                            <a href="unblockCoupon?id=<%= data._id %>">
+                                <div class="ButtonFixed greenButtonFixed" style="margin-left: 60px;">
+                                    UNBLOCK
+                                </div>
+                            </a>
+                            <% } %>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+</div>

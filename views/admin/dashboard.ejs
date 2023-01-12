@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<body>
+
+
+    <div class="dash_1">
+        <div class="dash_1_1">
+            <div class="dash_1_1_1" style="background-color: white;color: green;">
+                INDEX
+            </div>
+            <a href="dashboardReport">
+            <div class="dash_1_1_1">
+                REPORT
+            </div>
+            </a>
+            <a href="dashboardCoupons">
+            <div class="dash_1_1_1">
+                COUPONS
+            </div>
+            </a>
+            <a href="dashboardOffers">
+            <div class="dash_1_1_1">
+                OFFERS
+            </div>
+            </a>
+        </div>
+        <div class="dash_1_2">
+
+            <input id="reportHourly" value="<%= data.reportHourly %>" style="display: none;">
+            <input id="hour" value="<%= data.hour %>" style="display: none;">
+            <div
+                style="font-size: 20px;font-weight: bold;color: black;width: fit-content; margin: auto;  margin-top: 50px;">
+                Today's Report</div>
+            <canvas id="hourly" style="width:70vw;max-width:800px;margin: auto;margin-top: 20px;"></canvas>
+
+            <input id="reportDaily" value="<%= data.reportDaily %>" style="display: none;">
+            <input id="day" value="<%= data.day %>" style="display: none;">
+            <div
+                style="font-size: 20px;font-weight: bold;color: black;width: fit-content; margin: auto;  margin-top: 100px;">
+                Month's Report</div>
+            <canvas id="daily" style="width:100%;max-width:800px;margin: auto;margin-top: 20px;"></canvas>
+            <br><br><br><br><br>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+
+
+
+
+        let hour = parseInt(document.getElementById('hour').value);
+        var yValues = document.getElementById('reportHourly').value;
+        yValues = yValues.split(",");
+        let xValues = [];
+        for (i = 0; i < 24 - hour - 1; i++) {
+            xValues[i] = hour + i + 1;
+        }
+        for (i = 24 - hour - 1; i < 24; i++) {
+            xValues[i] = i - 24 + hour + 1;
+        }
+
+        let day = parseInt(document.getElementById('day').value);
+        var yValues2 = document.getElementById('reportDaily').value;
+        yValues2 = yValues2.split(",");
+        let xValues2 = [];
+        for (i = 0; i < 30 - day - 1; i++) {
+            xValues2[i] = day + i + 1;
+            xValues2[i] = xValues2[i] + 1;
+        }
+        for (i = 30 - day - 1; i < 30; i++) {
+            xValues2[i] = i - 30 + day + 1;
+            xValues2[i] = xValues2[i] + 1;
+        }
+
+        new Chart("hourly", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: { display: false },
+
+            }
+        });
+
+        new Chart("daily", {
+            type: "line",
+            data: {
+                labels: xValues2,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yValues2
+                }]
+            },
+            options: {
+                legend: { display: false },
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

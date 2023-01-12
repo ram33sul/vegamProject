@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="/stylesheets/orders.css">
+
+
+
+
+
+<div class="orders_1">
+    <% data.forEach(function(data){ 
+        if(data.order.status=='cancelled'){
+            statusColor='fontRed';
+        }
+        else if(data.order.status=='delivered'){
+            statusColor='fontGreen';
+        } else {
+            statusColor='fontBlue';
+        }%>
+    <div class="orders_1_1">
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                ID:
+            </div>
+            <div class="orders_1_1_1_2 fontBlue">
+                <%= data._id %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                No. products:
+            </div>
+            <div class="orders_1_1_1_2">
+                <%= data.order.products.length %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Total Amount:
+            </div>
+            <div class="orders_1_1_1_2">
+                Rs. <%= data.order.total %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Address:
+            </div>
+            <div class="orders_1_1_1_2">
+                <%= data.order.address.addressType %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                status:
+            </div>
+            <div class="orders_1_1_1_2 <%= statusColor %>" id="orderStatus<%= data._id %>">
+                <%= data.order.status %>
+            </div>
+        </div>
+        <% if(data.order.status=='delivered'){ %>
+        <div class="ButtonFixed redButtonFixed" id="returnBtn<%= data._id %>" onclick="returnOrderClicked('<%= data._id %>')">
+            RETURN
+        </div>
+        <% } else if(data.order.status=='placed') { %>
+        <div class="ButtonFixed redButtonFixed" id="cancelBtn<%= data._id %>" onclick="cancelOrderClicked('<%= data._id %>')">
+            CANCEL
+        </div>
+        <% } else { %>
+
+        <% } %>
+    </div>
+    <% }) %>
+</div>
+<script>
+    let xhr = new XMLHttpRequest();
+    function cancelOrderClicked(orderId){
+        xhr.open('GET','cancelTheOrder?id='+orderId,true);
+        xhr.send();
+        xhr.onload = () => {
+            if(xhr.status===200){ 
+                let data = JSON.parse(xhr.responseText);
+                if(data){
+                    document.getElementById('orderStatus'+orderId).innerHTML='cancelled';
+                    document.getElementById('orderStatus'+orderId).style.color='red';
+                    document.getElementById('cancelBtn'+orderId).style.display='none';
+                }
+            }
+        }
+    }
+</script>

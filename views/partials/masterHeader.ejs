@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/header.css' />
+    <title>hihi</title>
+</head>
+
+<body>
+    <% if(page=='outlets' ||page=='outletDetails' ){ outletsBorder='border_2px_solid_white' ;
+        usersBorder='borderTransparent' ; masterBorder='borderTransparent' ; } else if(page=='users'
+        ||page=='userDetails' ) { outletsBorder='borderTransparent' ; usersBorder='border_2px_solid_white' ;
+        masterBorder='borderTransparent' ; } %>
+        <div class="section_1 masterAdminHeader">
+            <div class="section_1_1">
+
+            </div>
+            <div class="section_1_2">
+                <a href="outlets">
+                    <div class="section_1_2_1 <%= outletsBorder %>">
+                        OUTLETS
+                    </div>
+                </a>
+                <div class="logo cartLogo">
+
+                </div>
+                <a href="users">
+                    <div class="section_1_2_1 <%= usersBorder %>">
+                        USERS
+                    </div>
+                </a>
+                <div class="logo cartLogo">
+
+                </div>
+                <a href="dashboard">
+                    <div class="section_1_2_1 <%= usersBorder %>">
+                        DASHBOARD
+                    </div>
+                </a>
+                <div class="logo cartLogo">
+
+                </div>
+                <div class="dropDownWrap">
+                    <a href="logout">
+                        <div class="section_1_2_1" onclick="profileClicked()">
+                            <%= username %>
+                                <div class="dropDownArrow"></div>
+                        </div>
+                    </a>
+                    <div class="logo profileLogo" onclick="profileClicked()"></div>
+                    <div class="section_2" id="profileDropDown">
+                        <div class="section_2_1">
+                            <div class="section_2_1_1">PROFILE</div>
+                        </div>
+                        <div class="section_2_1">
+                            <div class="section_2_1_1">ORDERS</div>
+                        </div>
+                        <div class="section_2_1">
+                            <a href="logout">
+                                <div class="section_2_1_1">LOGOUT</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section_space" style="width: 100vw; height: 60px;"></div>
+        <script>
+            let i = 0;
+            function categoryClicked() {
+                if (i == 0) {
+                    document.getElementById('profileDropDown').style.display = 'none';
+                    j = 0;
+                    document.getElementById('categoryDropDown').style.display = 'block';
+                    i = 1;
+                }
+                else {
+                    document.getElementById('categoryDropDown').style.display = 'none';
+                    document.getElementById('categoryDropDownMen').style.display = 'none';
+                    document.getElementById('categoryDropDownWomen').style.display = 'none';
+                    i = 0;
+                }
+
+            }
+            function categoryMenClicked() {
+                document.getElementById('categoryDropDownWomen').style.display = 'none';
+                document.getElementById('categoryDropDownMen').style.display = 'block';
+            }
+            function categoryWomenClicked() {
+                document.getElementById('categoryDropDownMen').style.display = 'none';
+                document.getElementById('categoryDropDownWomen').style.display = 'block';
+            }
+            j = 0;
+            function profileClicked() {
+                if (j == 0) {
+                    document.getElementById('categoryDropDown').style.display = 'none';
+                    document.getElementById('categoryDropDownMen').style.display = 'none';
+                    document.getElementById('categoryDropDownWomen').style.display = 'none';
+                    i = 0;
+                    document.getElementById('profileDropDown').style.display = 'block';
+                    document.getElementById('profileDropDown').style.position = 'fixed';
+                    document.getElementById('profileDropDown').style.right = '0';
+                    document.getElementById('profileDropDown').style.top = '23px';
+                    j = 1;
+                }
+                else {
+                    document.getElementById('profileDropDown').style.display = 'none';
+                    j = 0;
+                }
+            }
+        </script>
+</body>
+
+</html>

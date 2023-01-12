@@ -1,0 +1,79 @@
+.report_1 {
+    background-color: white;
+    width: 80vw;
+    min-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 20px;
+}
+    .report_1_1 {
+        font-size: 20px;
+        font-weight: bold;
+        width: fit-content;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .report_1_2 {
+        font-size: 15px;
+        font-weight: bold;
+        width: fit-content;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .report_1_3{
+        width: 250px;
+        min-width: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .report_1_3_2{
+        font-weight: bold;
+    }
+    .report_1_4 {
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        border: 1px solid gray;
+    }
+    .report_1_4_1{
+        background-color: gray;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .report_1_4_1_1{
+        width: 50%;
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+        padding: 10px;
+    }
+    .report_1_4_1_2{
+        width: 25%;
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+        padding: 10px;
+    }
+    .report_1_4_2{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .report_1_4_2_1{
+        width: 50%;
+        text-align: center;
+        font-size: 15px;
+        padding: 5px;
+    }
+    .report_1_4_2_2{
+        width: 25%;
+        text-align: center;
+        font-size: 15px;
+        padding: 5px;
+    }

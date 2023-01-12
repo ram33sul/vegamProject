@@ -1,0 +1,137 @@
+.dashboard_1 {
+    background-color: red;
+}
+
+.dash1 {
+    width: fit-content;
+    min-width: 60vw;
+    height: fit-content;
+    border: 1px solid silver;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.dash11 {
+    width: fit-content;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.dash12 {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: fit-content;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.dash121 {
+    width: fit-content;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.dash122 {
+    font-size: 15px;
+}
+
+
+.dash_1{
+    display: flex;
+}
+.dash_1_1{
+    width: 20%;
+    background-color: green;
+    padding: 10px;
+    min-height: 100vh;
+}
+.dash_1_1_1{
+    margin-left: auto;
+    text-align: right;
+    padding: 5px 20px 5px 20px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.dash_1_1_1:hover{
+    opacity: 0.6;
+}
+.dash_1_1_1:active{
+    transform: scale(1.2);
+    transform-origin: center;
+}
+.dash_1_2{
+    width: 80%;
+}
+
+.coupon_1{
+    width: 80%;
+    height: fit-content;
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.coupon_1_1{
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+.coupon_1_2{
+    display: flex;
+    width: 40%;
+    margin: auto;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+}
+.coupon_1_2_1{
+    font-size: 17px;
+    font-weight: bold;
+}
+.coupon_1_2_2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-weight: bold;
+}
+.coupon_1_2_2_1{
+    width: 50px;
+    height: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+.coupon_1_2_2_2{
+    font-size: 17px;
+    padding: 5px 15px 5px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.coupon_1_2_2_2:hover{
+    opacity: 0.6;
+}
+.coupon_1_2_2_2:active{
+    transform: scale(1.2);
+}

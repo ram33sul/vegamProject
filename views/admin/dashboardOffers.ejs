@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+<div class="dash_1">
+    <div class="dash_1_1">
+        <a href="dashboard">
+            <div class="dash_1_1_1">
+                INDEX
+            </div>
+        </a>
+        <a href="dashboardReport">
+            <div class="dash_1_1_1">
+                REPORT
+            </div>
+        </a>
+        <a href="dashboardCoupons">
+            <div class="dash_1_1_1">
+                COUPONS
+            </div>
+        </a>
+        <a href="dashboardOffers">
+            <div class="dash_1_1_1" style="background-color: white;color: green;">
+                OFFERS
+            </div>
+        </a>
+    </div>
+    <div class="dash_1_2">
+        <div class="coupon_1">
+                <div class="coupon_1_1">
+                    OFFERS
+                </div>
+                <div class="coupon_1_2">
+                    <div class="coupon_1_2_1" data-value="none" id="gender">
+                        GENDER :
+                    </div>
+                    <div class="coupon_1_2_2">
+                        <div class="coupon_1_2_2_2" id="male" onclick="genderSelect('male')">
+                            MALE
+                        </div>
+                        <div class="coupon_1_2_2_2" id="female" onclick="genderSelect('female')">
+                            FEMALE
+                        </div>
+                    </div>
+                </div>
+                <div class="coupon_1_2">
+                    <div class="coupon_1_2_1">
+                        SHIRTS :
+                    </div>
+                    <div class="coupon_1_2_2">
+                        <input type="number" class="coupon_1_2_2_1" placeholder="0" id="shirts" name="shirts">%
+                    </div>
+                </div>
+                <div class="coupon_1_2">
+                    <div class="coupon_1_2_1">
+                        T-SHIRTS :
+                    </div>
+                    <div class="coupon_1_2_2">
+                        <input type="number" class="coupon_1_2_2_1" placeholder="0" id="tshirts" name="tshirts"
+                            value="<%= data.male?.tshirts %>">%
+                    </div>
+                </div>
+                <div class="coupon_1_2">
+                    <div class="coupon_1_2_1">
+                        PANTS :
+                    </div>
+                    <div class="coupon_1_2_2">
+                        <input type="number" class="coupon_1_2_2_1" placeholder="0" id="pants" name="pants"
+                            value="<%= data.male?.pants %>">%
+                    </div>
+                </div>
+                <button class="greenButton marginAuto" onclick="formSubmit()">
+                    SAVE CHANGES
+                </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let xhr =new XMLHttpRequest();
+
+    let genderSelect = function genderSelectFunc() {
+        let prevGender;
+        return (gender) => {
+            document.getElementById("gender").setAttribute("data-value", gender);
+            let genderDiv = document.getElementById(gender);
+            genderDiv.style.backgroundColor = "black";
+            genderDiv.style.color = "white";
+            if (prevGender&&prevGender!=gender) {
+                let prevGenderDiv = document.getElementById(prevGender);
+                prevGenderDiv.style.backgroundColor = "white";
+                prevGenderDiv.style.color = "black";
+            }
+            prevGender = gender;
+            if(gender=='male'){
+                document.getElementById('shirts').value='<%= data.male?.shirts %>';
+                document.getElementById('tshirts').value='<%= data.male?.tshirts %>';
+                document.getElementById('pants').value='<%= data.male?.pants %>';
+            } else {
+                document.getElementById('shirts').value='<%= data.female?.shirts %>';
+                document.getElementById('tshirts').value='<%= data.female?.tshirts %>';
+                document.getElementById('pants').value='<%= data.female?.pants %>';
+            }
+        }
+    }();
+    genderSelect('male');
+
+    function formSubmit(){
+        if(document.getElementById('shirts').value>100||document.getElementById('tshirts').value>100||document.getElementById('pants').value>100){
+            return false;
+        } else {
+            let formData = {
+                gender: document.getElementById('gender').getAttribute('data-value'),
+                shirts: document.getElementById('shirts').value,
+                tshirts: document.getElementById('tshirts').value,
+                pants: document.getElementById('pants').value
+            }
+            xhr.open('POST','postCategoryOffer',false);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(formData));
+            if(xhr.status===200){
+
+            }
+        }
+    }
+
+
+</script>

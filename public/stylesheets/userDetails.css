@@ -1,0 +1,44 @@
+.mudsection_1 {
+    border: 1px solid gray;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: fit-content;
+    min-width: 50vw;
+    margin: auto;
+    margin-top: 80px;
+}
+    .mudsection_1_1 {
+        font-weight: bold;
+        font-size: 18px;
+        width: fit-content;
+        height: fit-content;
+        padding: 5px;
+    }
+    .mudsection_1_2 {
+        color: #0197A6;
+        font-weight: bold;
+        width: fit-content;
+        height: fit-content;
+        padding: 5px;
+        font-size: 15px;
+    }
+    .mudsection_1_3 {
+        font-size: 15px;
+        padding: 4px;
+        margin-left: 5px;
+        outline: none;
+    }
+.mudsection_2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: fit-content;
+    min-width: 50vw;
+    margin: auto;
+}

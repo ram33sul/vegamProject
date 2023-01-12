@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="/stylesheets/orders.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+<div class="table">
+    <div class="tableHeader">
+        <div class="tableHeaderContent">
+            ORDER ID
+        </div>
+        <div class="tableHeaderContent">
+            no. of products
+        </div>
+        <div class="tableHeaderContent">
+            ADDRESS
+        </div>
+        <div class="tableHeaderContent">
+            AMOUNT
+        </div>
+        <div class="tableHeaderContent">
+            STATUS
+        </div>
+    </div>
+    <% data.forEach(function(data){ 
+        if(data.order.status=='cancelled'||data.order.status=='returned'){
+            statusColor='fontRed';
+        }
+        else if(data.order.status=='delivered'){
+            statusColor='fontGreen';
+        } else {
+            statusColor='fontBlue';
+        }%>
+    <div class="tableRow" onclick="tableRowClick('<%= data._id %>')">
+        <div class="tableContent">
+            <%= data._id %>
+        </div>
+        <div class="tableContent">
+            <%= data.order.products.length %>
+        </div>
+        <div class="tableContent">
+            <%= data.order.address.addressType %>
+        </div>
+        <div class="tableContent">
+            Rs. <%= data.order.total %>
+        </div>
+        <div class="tableContent fontBold <%= statusColor %>" id="orderStatus<%= data._id %>">
+            <%= data.order.status.toUpperCase() %>
+        </div>
+    </div>
+    <div class="wrap" id="<%= data._id %>" style="display: none;">
+    <% data.order.products.forEach((data2) => { %>
+    <div class="tableRow" style=" background-color: rgb(230, 230, 230);">
+        <div class="tableContent">
+            <div class="tableContentImage" style="background-image: url('../images/products/<%= data2.product %>0.jpg');">
+
+            </div>
+        </div>
+        <div class="tableContent">
+            ID: <%= data2.product %>
+        </div>
+        <div class="tableContent">
+            SIZE: <%= data2.size %>
+        </div>
+        <div class="tableContent">
+            QUANTITY: <%= data2.quantity %>
+        </div>
+        <div class="tableContent fontBold">
+            STATUS: <%= data2.status.toUpperCase() %>
+        </div>
+        <div class="tableContent">
+            <% if(data2.status=='placed'||data2.status=='shipped'){ %>
+                <a href="cancelProduct?productId=<%= data2.product %>&orderId=<%= data._id %>">
+                    <div class="ButtonFixed redButtonFixed">
+                        CANCEL
+                    </div>
+                </a>
+            <% } else if (data2.status=='delivered') { %>
+                <a href="returnProduct?productId=<%= data2.product %>&orderId=<%= data._id %>">
+                    <div class="ButtonFixed redButtonFixed">
+                        RETURN
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <% }) %>
+    </div>
+<% }) %>
+</div>
+<br><br><br><br><br>
+<script>
+    let xhr = new XMLHttpRequest();
+    function cancelOrderClicked(orderId){
+        xhr.open('GET','cancelTheOrder?id='+orderId,true);
+        xhr.send();
+        xhr.onload = () => {
+            if(xhr.status===200){ 
+                let data = JSON.parse(xhr.responseText);
+                if(data){
+                    document.getElementById('orderStatus'+orderId).innerHTML='cancelled';
+                    document.getElementById('orderStatus'+orderId).style.color='red';
+                    document.getElementById('cancelBtn'+orderId).style.display='none';
+                }
+            }
+        }
+    }
+    //let flag=true;
+    //let flag2=false;
+    //let currentId;
+    //function tableRowClick(id){
+
+    //    if(flag){
+      //      if(flag2){
+        //        document.getElementById(currentId).style.display='none';
+          //  }
+            //document.getElementById(id).style.display='';
+//            flag=false;
+  //          flag2=true;
+    //        currentId = id;
+      //  }
+        //else{
+          //  document.getElementById(id).style.display='none';
+            //flag=true;
+        //}
+        
+
+    //}
+
+    let flag=true;
+    let flag2=true;
+    let currentId;
+    function tableRowClick(id){
+        if(flag2){
+            document.getElementById(id).style.display='';
+        }
+        else{
+            if(currentId==id){
+                if(flag){
+                    document.getElementById(id).style.display='';
+                    flag=false;
+                }
+                else{
+                    document.getElementById(id).style.display='none';
+                    flag=true;
+                }
+            }
+            else{
+                document.getElementById(currentId).style.display='none';
+                document.getElementById(id).style.display='';
+            }
+        }
+        currentId=id;
+        flag2=false;
+    }
+</script>

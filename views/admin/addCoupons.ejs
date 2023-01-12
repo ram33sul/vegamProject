@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="/stylesheets/coupons.css">
+
+<div class="successMessagePopper" id="successMessagePopper"></div>
+<div class="errorMessagePopper" id="errorMessagePopper"></div>
+
+
+<form action="postAddCoupons" method="post">
+    <div class="coupon_1">
+        <div class="coupon_1_1">
+            ADD NEW COUPON
+        </div>
+        <div class="coupon_1_2">
+            <div class="coupon_1_2_1">
+                NAME:
+            </div>
+            <div class="coupon_1_2_2">
+                <input type="text" name="name" class="coupon_1_2_1_1" required>
+            </div>
+        </div>
+        <!--<div class="coupon_1_2">
+            <div class="coupon_1_2_1">
+                TYPE:
+            </div>
+            <div class="coupon_1_2_2">
+                <input type="text" name="type" style="display: none;" id="type" required>
+                <div class="coupon_1_2_2_1" id="fixed" onclick="typeClick('fixed')">
+                    FIXED
+                </div>
+                <div class="coupon_1_2_2_1" id="percentage" onclick="typeClick('percentage')">
+                    PERCENTAGE
+                </div>
+            </div>
+        </div>
+    -->
+        <div class="coupon_1_2">
+            <div class="coupon_1_2_1">
+                VALUE:
+            </div>
+            <div class="coupon_1_2_2">
+                <input type="number" name="value" class="coupon_1_2_1_1" min="0" required>
+            </div>
+        </div>
+        <div class="coupon_1_2">
+            <div class="coupon_1_2_1">
+                MIN SPENT:
+            </div>
+            <div class="coupon_1_2_2">
+                <input type="number" name="minSpent" class="coupon_1_2_1_1" min="0" required>
+            </div>
+        </div>
+        <div class="coupon_1_2">
+            <div class="coupon_1_2_1">
+                DESCRIPTION:
+            </div>
+            <div class="coupon_1_2_2">
+                <input type="text" name="description" class="coupon_1_2_1_1" required>
+            </div>
+        </div>
+        <div class="coupon_1_3">
+            <button class="ButtonFixed greenButtonFixed">
+                SUBMIT
+            </button>
+            <a href="coupons">
+                <div class="ButtonFixed redButtonFixed">
+                    CANCEL
+                </div>
+            </a>
+        </div>
+    </div>
+</form>
+<script>
+    let preValue;
+    function typeClick(value){
+        document.getElementById('type').value=value;
+        document.getElementById(value).style.backgroundColor='black';
+        document.getElementById(value).style.color='white';
+        if(preValue){
+            document.getElementById(preValue).style.backgroundColor='white';
+            document.getElementById(preValue).style.color='black';
+        }
+        preValue=value;
+    }
+
+
+</script>

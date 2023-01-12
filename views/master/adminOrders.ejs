@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="/stylesheets/orders.css">
+
+
+
+
+
+<div class="orders_1">
+    <% data.forEach(function(data){ 
+        if(data.status=='cancelled'){
+            statusColor='fontRed';
+        }
+        else if(data.status=='delivered'){
+            statusColor='fontGreen';
+        } else {
+            statusColor='fontBlue';
+        }%>
+    <div class="orders_1_1" style="height:200px;">
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Product ID:
+            </div>
+            <div class="orders_1_1_1_2 fontBlue">
+                <%= data.product %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Quantity:
+            </div>
+            <div class="orders_1_1_1_2">
+                <%= data.quantity%>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Size:
+            </div>
+            <div class="orders_1_1_1_2">
+                Rs. <%= data.size %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Address:
+            </div>
+            <div class="orders_1_1_1_2">
+                <%= data.address.addressType %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                Order ID:
+            </div>
+            <div class="orders_1_1_1_2 fontBlue">
+                <%= data.orderId %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                User ID:
+            </div>
+            <div class="orders_1_1_1_2 fontBlue">
+                <%= data.user %>
+            </div>
+        </div>
+        <div class="orders_1_1_1">
+            <div class="orders_1_1_1_1">
+                status:
+            </div>
+            <div class="orders_1_1_1_2 orderStatus<%= data.orderId %> <%= statusColor %>">
+                <%= data.status %>
+            </div>
+        </div>
+        <% if(data.status=='placed') { %>
+        <div class="ButtonFixed redButtonFixed cancelBtn<%= data.orderId %>" id="cancelBtn<%= data._id %>" onclick="cancelOrderClicked('<%= data.orderId %>')">
+            CANCEL
+        </div>
+        <% } %>
+    </div>
+    <% }) %>
+</div>
+<script>
+    let xhr = new XMLHttpRequest();
+    function cancelOrderClicked(orderId){
+        xhr.open('GET','cancelTheOrder?id='+orderId,true);
+        xhr.send();
+        xhr.onload = () => {
+            if(xhr.status===200){ 
+                let data = JSON.parse(xhr.responseText);
+                if(data){
+                    let statusViewer = document.getElementsByClassName('orderStatus'+orderId);
+                    let cancelBtn = document.getElementsByClassName('cancelBtn'+orderId);
+                    for(i=0;i<statusViewer.length;i++){
+                        statusViewer[i].innerHTML='cancelled';
+                        statusViewer[i].style.color='red'; 
+                        cancelBtn[i].style.display='none';
+                    }
+                }
+            }
+        }
+    }
+</script>

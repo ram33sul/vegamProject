@@ -1,0 +1,173 @@
+<a href="addProduct">
+<div class="greenButton" style="margin: auto;margin-top:20px;">
+    ADD PRODUCT
+</div>
+</a>
+    <div class="table">
+        <div class="tableHeader">
+            <div class="tableHeaderContent">
+                IMAGE
+            </div>
+            <div class="tableHeaderContent">
+                PRODUCT ID
+            </div>
+            <div class="tableHeaderContent">
+                PRICE
+            </div>
+            <div class="tableHeaderContent">
+                STATUS
+            </div>
+            <div class="tableHeaderContent">
+                ACTION
+            </div>
+        </div>
+        <% data.forEach(function(data){ %>
+            <div class="tableRow" onclick="productClick('<%= data._id %>')">
+                <div class="tableContentImage" style="background-image: url('../images/products/<%= data._id %>0.jpg');">
+
+                </div>
+                <div class="tableContent">
+                    <%= data._id %>
+                </div>
+                <div class="tableContent">
+                    <%= data.actualPrice %>
+                </div>
+                <div class="tableContent">
+                    <% if(data.status){ %>
+                        <div class="fontGreen">
+                            ACTIVE
+                        </div>
+                    <% } else { %>
+                        <div class="fontRed">
+                            NOT-ACTIVE
+                        </div>
+                    <% } %>
+                </div>
+                <div class="tableContent">
+                    <% if(data.status){ %>
+                        <a href="productDelete?id=<%= data._id %>">
+                            <div class="ButtonFixed redButtonFixed">
+                                DELETE
+                            </div>
+                        </a>
+                    <% } else { %>
+                        <a href="productRecover?id=<%= data._id %>">
+                            <div class="ButtonFixed greenButtonFixed">
+                                RECOVER
+                            </div>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="ahsection_1_1" style="border: 0; width: 100%;margin: auto;margin-top: 0;display: none;background-color: rgb(240, 240, 240);border-radius: 10px;border: 5px solid white;" id="<%= data._id %>">
+                <div class="ahsection_1_1_2" style="display: flex;flex-wrap: wrap;gap: 10px;padding-top: 40px;">
+                    <div class="ahsection_1_1_2_1">
+                        <div class="ahsection_1_1_2_1_1">
+                            COLOR: 
+                        </div>
+                        <div class="ahsection_1_1_2_1_2">
+                            <%= data.color %>
+                        </div>
+                    </div>
+                    <div class="ahsection_1_1_2_1">
+                        <div class="ahsection_1_1_2_1_1">
+                            PATTERN: 
+                        </div>
+                        <div class="ahsection_1_1_2_1_2">
+                            <%= data.pattern %>
+                        </div>
+                    </div>
+                    <div class="ahsection_1_1_2_1">
+                        <div class="ahsection_1_1_2_1_1">
+                            GENDER: 
+                        </div>
+                        <div class="ahsection_1_1_2_1_2">
+                            <%= data.gender %>
+                        </div>
+                    </div>
+                    <div class="ahsection_1_1_2_1">
+                        <div class="ahsection_1_1_2_1_1">
+                            CATEGORY: 
+                        </div>
+                        <div class="ahsection_1_1_2_1_2">
+                            <%= data.category %>
+                        </div>
+                    </div>
+                </div>
+                <div class="ahsection_1_1_3">
+                    <div class="ahsection_1_1_3_1">
+                        AVAILABLE QUANTITY:
+                    </div>
+                    <div class="ahsection_1_1_3_2">
+                        <div class="ahsection_1_1_3_2_1">
+                            <div class="ahsection_1_1_3_2_1_1">
+                                SMALL:
+                            </div>
+                            <div class="ahsection_1_1_3_2_1_2">
+                                <%= data.stock.s %>
+                            </div>
+                        </div>
+                        <div class="ahsection_1_1_3_2_1">
+                            <div class="ahsection_1_1_3_2_1_1">
+                                MEDIUM:
+                            </div>
+                            <div class="ahsection_1_1_3_2_1_2">
+                                <%= data.stock.m %>
+                            </div>
+                        </div>
+                        <div class="ahsection_1_1_3_2_1">
+                            <div class="ahsection_1_1_3_2_1_1">
+                                LARGE:
+                            </div>
+                            <div class="ahsection_1_1_3_2_1_2">
+                                <%= data.stock.l %>
+                            </div>
+                        </div>
+                        <div class="ahsection_1_1_3_2_1">
+                            <div class="ahsection_1_1_3_2_1_1">
+                                X-LARGE:
+                            </div>
+                            <div class="ahsection_1_1_3_2_1_2">
+                                <%= data.stock.xl %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ahsection_1_1_2_1" style="margin-top:40px;">
+                    <div class="ahsection_1_1_2_1_1">
+                        OFFER: 
+                    </div>
+                    <div class="ahsection_1_1_2_1_2">
+                        <%= data.offer %>%
+                    </div>
+                </div>
+                <div class="ahsection_1_1_5">
+                    <a href="editProduct?id=<%= data._id %>"> 
+                        <div class="ButtonFixed blueButtonFixed">
+                            EDIT
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+    <script>
+        let currentIdStatus = false;
+        let currentId;
+        function productClick(id){
+            if(currentIdStatus){
+                if(currentId==id){
+                    document.getElementById(id).style.display='none';
+                    currentIdStatus = false;
+                } else {
+                    document.getElementById(currentId).style.display='none';
+                    document.getElementById(id).style.display='';
+                }
+            } else {
+                document.getElementById(id).style.display='';
+                currentIdStatus = true;
+            }
+            currentId = id;
+        }
+    </script>

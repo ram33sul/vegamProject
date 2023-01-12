@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/Login.css' />
+    <title>Login</title>
+</head>
+<body>
+    <div class="section_1 adminLogin">
+        <div class="section_1_1">
+            <div class="section_1_1_1">
+
+            </div>
+            <div class="section_1_1_2">
+                <a href="login">
+                <div class="section_1_1_2_1">
+                    GO BACK
+                </div>
+                </a>
+            </div>
+        </div>
+        <div class="section_1_2">
+            <form name="signupForm" method="post" action="/admin/signup" onsubmit="return validateSubmit()">
+                <div class="section_1_2_1">
+                    SIGNUP
+                </div>
+                <div class="sectionErrorMessage">
+                    <%= message %>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="outletName" id="outletName" onblur="inputBlur(0)" onclick="inputClick(0)" onkeydown="return validateInput(event,0)">
+                    <div class="section_1_2_2_2">
+                        Outlet Name
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="regNo" id="regNo" onblur="inputBlur(1)" onclick="inputClick(1)" onkeydown="return validateInput(event,1)">
+                    <div class="section_1_2_2_2">
+                        Outlet Registration Number
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="gstNo" id="gstNo" onblur="inputBlur(2)" onclick="inputClick(2)" onkeydown="return validateInput(event,2)">
+                    <div class="section_1_2_2_2">
+                        GST Number
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="email" id="email" onblur="inputBlur(3)" onclick="inputClick(3)" onkeydown="return validateInput(event,3)">
+                    <div class="section_1_2_2_2">
+                        Email
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="gps" id="gps" onblur="inputBlur(4)" onclick="inputClick(4)" onkeydown="return validateInput(event,4)">
+                    <div class="section_1_2_2_2">
+                        GPS coordinates
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="password" id="password" onblur="inputBlur(5)" onclick="inputClick(5)" onkeydown="return validateInput(event,5)">
+                    <div class="section_1_2_2_2">
+                        Password
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="cpassword" id="cpassword" onblur="inputBlur(6)" onclick="inputClick(6)" onkeydown="return validateInput(event,6)">
+                    <div class="section_1_2_2_2">
+                        Confirm Password
+                    </div>
+                </div>
+                <button type="submit" class="section_1_2_3">
+                    CONTINUE
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="/javascripts/adminSignupVal.js"></script>
+</body>
+</html>

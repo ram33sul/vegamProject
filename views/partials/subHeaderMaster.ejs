@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/subHeader.css">
+    <title></title>
+</head>
+<body>
+    <div class="forSticky">
+    <div class="ssection_1">
+        <div class="ssection_1_1">
+            <div class="ssection_1_1_1">
+                <div class="ssection_1_1_1_1" onclick="sortClicked()">
+                    Sort
+                    <div class="dropDownArrow dropDownArrowGreen"></div>
+                </div>
+                <div class="ssection_1_1_1_2" id="sortDropDown">
+                    <div class="ssection_1_1_1_2_1">
+                        Latest
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Price Low to High
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Price High to Low
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Rating
+                    </div>
+                </div>
+            </div>
+            <div class="ssection_1_1_1">
+                <div class="ssection_1_1_1_1" onclick="filterClicked()">
+                    Filter
+                    <div class="dropDownArrow dropDownArrowGreen"></div>
+                </div>
+                <div class="ssection_1_1_1_2" id="filterDropDown">
+                    <div class="ssection_1_1_1_2_1">
+                        Size
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Price
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Rating
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Color
+                    </div>
+                    <div class="ssection_1_1_1_2_1">
+                        Pattern
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ssection_1_2">
+            <div class="ssection_1_2_1">
+                <input type="text" name="search" id="search" placeholder="Search..." class="ssection_1_2_1_1">
+            </div>
+            <div class="ssection_1_2_2">
+                Search
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="section_space" style="width: 100vw; height: 40px;"></div>
+    <script>
+        i=0;
+        function sortClicked(){
+            if(i==0){
+                document.getElementById('sortDropDown').style.height='130px';
+                i=1;
+                document.getElementById('filterDropDown').style.height='0px';
+                j=0;
+            }
+            else{
+                document.getElementById('sortDropDown').style.height='0px';
+                i=0;
+            }
+        }
+        j=0;
+        function filterClicked(){
+            if(j==0){
+                document.getElementById('filterDropDown').style.height='160px';
+                j=1;
+                document.getElementById('sortDropDown').style.height='0px';
+                i=0;
+            }
+            else{
+                document.getElementById('filterDropDown').style.height='0px';
+                j=0;
+            }
+        }
+    </script>
+</body>
+</html>

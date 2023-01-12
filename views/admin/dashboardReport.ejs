@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+<div class="dash_1">
+    <div class="dash_1_1">
+        <a href="dashboard">
+        <div class="dash_1_1_1">
+            INDEX
+        </div>
+        </a>
+        <a href="dashboardReport">
+            <div class="dash_1_1_1" style="background-color: white;color: green;">
+                REPORT
+            </div>
+        </a>
+        <a href="dashboardCoupons">
+            <div class="dash_1_1_1">
+                COUPONS
+            </div>
+        </a>
+        <a href="dashboardOffers">
+            <div class="dash_1_1_1">
+                OFFERS
+            </div>
+            </a>
+    </div>
+    <div class="dash_1_2">
+
+
+        <div class="dash1">
+            <form method="post" action="postReport">
+                <div class="dash11">
+                    Report:
+                </div>
+                <div class="dash12">
+                    <div class="dash121">
+                        From date:
+                    </div>
+                    <input type="date" class="dash122" name="fromDate" id="fromDate" onchange="fromDateClick()"
+                        required>
+                </div>
+                <div class="dash12">
+                    <div class="dash121">
+                        To date:
+                    </div>
+                    <input type="date" class="dash122" name="toDate" id="toDate" required>
+                </div>
+                <button class="ButtonFixed blueButtonFixed marginAuto">
+                    SUBMIT
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+        <script>
+            let fromDate = document.getElementById('fromDate');
+            let toDate = document.getElementById('toDate');
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let days = date.getDate();
+            date = year + "-" + month + "-" + days;
+            fromDate.setAttribute("max", date);
+            toDate.setAttribute("max", date);
+            function fromDateClick() {
+                toDate.setAttribute("min", fromDate.value);
+                if (fromDate.value > toDate.value) {
+                    toDate.value = fromDate.value;
+                }
+            }
+        </script>

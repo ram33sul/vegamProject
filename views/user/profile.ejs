@@ -1,0 +1,412 @@
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+
+<div class="successMessagePopper" id="successMessagePopper"></div>
+<div class="profile_1">
+    <div class="profile_1_1">
+        USER DETAILS:
+    </div>
+    <form action="postProfileEdit" method="POST" onsubmit="profileSaveChanges(event)">
+        <div class="profile_1_2">
+            <div class="profile_1_2_1">
+                Name:
+            </div>
+            <div class="profile_1_2_2">
+                <input type="text" name="fullName" id="fullName" class="profile_1_2_2_1" value="<%= data.fullName %>"
+                    required readonly>
+            </div>
+        </div>
+        <div class="profile_1_2">
+            <div class="profile_1_2_1">
+                username:
+            </div>
+            <div class="profile_1_2_2">
+                <input type="text" name="username" id="username" class="profile_1_2_2_1" value="<%= data.username %>"
+                    required readonly>
+            </div>
+        </div>
+        <div class="profile_1_2">
+            <div class="profile_1_2_1">
+                Email:
+            </div>
+            <div class="profile_1_2_2">
+                <input type="text" name="email" id="email" class="profile_1_2_2_1" value="<%= data.email %>" required
+                    readonly>
+            </div>
+        </div>
+        <div class="profile_1_2">
+            <div class="profile_1_2_1">
+                Mobile number:
+            </div>
+            <div class="profile_1_2_2">
+                <input type="text" name="mobileNumber" id="mobileNumber" class="profile_1_2_2_1"
+                    value="<%= data.mobileNumber %>" required readonly>
+            </div>
+        </div>
+        <div class="profile_1_2 alignRight" id="optionOne" style="width: fit-content;">
+            <div class="blueButton" id="changePasswordBtn" style="margin-top: 5px;" onclick="changePasswordBtnClick()">
+                CHANGE PASSWORD
+            </div>
+            <div class="greenButton" id="editProfileBtn" onclick="editProfile()">
+                EDIT PROFILE
+            </div>
+        </div>
+        <div class="profile_1_2 alignRight" id="optionTwo" style="width: fit-content;display: none;">
+            <button class="greenButton" id="profileSaveChangesBtn">
+                SAVE CHANGES
+            </button>
+            <div class="redButton" id="profileSaveChangesBtn" onclick="cancelBtn()">
+                CANCEL
+            </div>
+        </div>
+    </form>
+    <form action="postChangePassword" method="post" onsubmit="passwordSaveChanges(event)">
+        <div class="profile_1_2" id="newPassword" style=" padding-top: 10px; display: none;">
+            <div class="profile_1_2_1">
+                New Password:
+            </div>
+            <div class="profile_1_2_2">
+                <input type="password" name="password" style="border-color: #0197A6;" id="password"
+                    class="profile_1_2_2_1" required>
+            </div>
+            <div class="profile_1_2 alignRight" id="optionTwo" style="width: fit-content;">
+                <button class="greenButton" id="passwordSaveChangesBtn">
+                    SAVE CHANGES
+                </button>
+                <div class="redButton" id="passwordcancelBtn" onclick="cancelBtn()">
+                    CANCEL
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="profile_1_1">
+        ADDRESS:
+    </div>
+    <div class="profile_1_2">
+        <div class="profile_1_2_1">
+            Default address:
+        </div>
+        <div class="profile_1_2_2" id="defaultAddress">
+            <%= data.defaultAddress %>
+        </div>
+    </div>
+    <div class="profile_1_2">
+        <div class="profile_1_2_1">
+            Saved Addresses:
+        </div>
+        <% data.address.forEach((data)=> { %>
+            <div class="profile_1_2_3" id="<%= data.addressType %>Btn"
+                onclick="addressTypeClick('<%= data.addressType %>')">
+                <%= data.addressType %>
+            </div>
+            <% }) %>
+                <div class="blueButton" onclick="addressTypeClick(false)">
+                    ADD NEW ADDRESS
+                </div>
+    </div>
+    <div class="profile_1_4">
+        <% data.address.forEach((data)=> { %>
+            <div class="profile_1_4_2" id="<%= data.addressType %>" style="display: none;">
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        Name:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.fullName %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        Mobile number:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.mobileNumber %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        pincode:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.pincode %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        House number:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.houseNumber %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        Town:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.town %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        District:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.district %>
+                    </div>
+                </div>
+                <div class="profile_1_2">
+                    <div class="profile_1_2_1">
+                        State:
+                    </div>
+                    <div class="profile_1_2_2">
+                        <%= data.state %>
+                    </div>
+                </div>
+                <div class="redButton alignRight" onclick="deleteAddress('<%= data.addressType %>')">
+                    DELETE ADDRESS
+                </div>
+            </div>
+            <% }) %>
+    </div>
+    <div class="profile_1_5" id="newAddressForm" style="display: none;">
+        <form method="POST" name="addressForm" action="addNewAddress" onsubmit="newAddressSubmit(event)">
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    Name:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="fullName" id="afullName" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    Mobile Number:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="mobileNumber" id="amobileNumber" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    Pincode:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="pincode" id="apincode" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    House Number/Name:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="houseNumber" id="ahouseNumber" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    Town:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="town" id="atown" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    District:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="district" id="adistrict" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    State:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="state" id="astate" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <div class="profile_1_2">
+                <div class="profile_1_2_1">
+                    Address type:
+                </div>
+                <div class="profile_1_2_2">
+                    <input type="text" name="houseNumber" id="aaddressType" class="profile_1_2_2_1" required>
+                </div>
+            </div>
+            <button class="greenButton alignRight" type="submit">
+                ADD ADDRESS
+            </button>
+        </form>
+    </div>
+    <div class="profile_1_1">
+        WALLET:
+    </div>
+    <div class="profile_1_2">
+        <div class="profile_1_2_1 bold">
+            BALANCE: <%= data.wallet %> Rs
+        </div>
+    </div>
+
+</div>
+<script>
+    let currentAddressType;
+    let xhr = new XMLHttpRequest();
+    function addressTypeClick(addressType) {
+        if (currentAddressType) {
+            document.getElementById(currentAddressType).style.display = 'none';
+            document.getElementById(currentAddressType + 'Btn').style.backgroundColor = 'transparent';
+            document.getElementById(currentAddressType + 'Btn').style.color = '#0197A6';
+        }
+        if (addressType) {
+            document.getElementById(addressType).style.display = '';
+            document.getElementById(addressType + 'Btn').style.backgroundColor = '#0197A6';
+            document.getElementById(addressType + 'Btn').style.color = 'white';
+            document.getElementById('newAddressForm').style.display = 'none';
+            currentAddressType = addressType;
+            xhr.open('GET', '/changeDefaultAddress?address=' + addressType, true);
+            xhr.send();
+            xhr.onload = () => {
+                if (xhr.status == 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    document.getElementById('defaultAddress').innerHTML = data;
+                }
+            }
+        }
+        else {
+            document.getElementById('newAddressForm').style.display = '';
+        }
+    }
+
+    function popperAppear(message) {
+        document.getElementById('successMessagePopper').innerHTML = message;
+        document.getElementById('successMessagePopper').style.opacity = '1';
+        document.getElementById('successMessagePopper').style.transform = 'translate(-50%,0%)';
+    }
+    function popperDisappear() {
+        document.getElementById('successMessagePopper').style.transform = 'translate(-50%,-100%)';
+        document.getElementById('successMessagePopper').style.opacity = '0';
+    }
+
+    function newAddressSubmit(event) {
+        event.preventDefault();
+        let formData = getAddressFormData();
+        xhr.open('POST', 'postNewAddress', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+    }
+
+    function getAddressFormData() {
+        let formData = {
+            fullName: document.getElementById('afullName').value,
+            mobileNumber: document.getElementById('amobileNumber').value,
+            pincode: document.getElementById('apincode').value,
+            houseNumber: document.getElementById('ahouseNumber').value,
+            town: document.getElementById('atown').value,
+            district: document.getElementById('adistrict').value,
+            state: document.getElementById('astate').value,
+            addressType: document.getElementById('aaddressType').value
+        }
+        return formData;
+    }
+
+    function getProfileFormData() {
+        let formData = {
+            fullName: document.getElementById('fullName').value,
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            mobileNumber: document.getElementById('mobileNumber').value,
+        }
+        return formData;
+    }
+
+    function getPasswordFormData() {
+        let formData = {
+            password: document.getElementById('password').value
+        }
+        return formData;
+    }
+
+    function deleteAddress(addressType) {
+        xhr.open('GET', 'deleteAddress?id=' + addressType, true);
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                popperAppear('Address deleted');
+                setTimeout(popperDisappear, 2000);
+            }
+        }
+        document.getElementById(addressType + 'Btn').style.display = 'none';
+        document.getElementById(addressType).style.display = 'none';
+    }
+
+    function editProfile() {
+        document.getElementById('fullName').style.borderColor = '#0197A6';
+        document.getElementById('username').style.borderColor = '#0197A6';
+        document.getElementById('email').style.borderColor = '#0197A6';
+        document.getElementById('mobileNumber').style.borderColor = '#0197A6';
+        document.getElementById('fullName').readOnly = false;
+        document.getElementById('username').readOnly = false;
+        document.getElementById('email').readOnly = false;
+        document.getElementById('mobileNumber').readOnly = false;
+        document.getElementById('optionOne').style.display = 'none';
+        document.getElementById('optionTwo').style.display = '';
+    }
+
+    function cancelBtn() {
+        document.getElementById('fullName').style.borderColor = 'transparent';
+        document.getElementById('username').style.borderColor = 'transparent';
+        document.getElementById('email').style.borderColor = 'transparent';
+        document.getElementById('mobileNumber').style.borderColor = 'transparent';
+        document.getElementById('fullName').readOnly = true;
+        document.getElementById('username').readOnly = true;
+        document.getElementById('email').readOnly = true;
+        document.getElementById('mobileNumber').readOnly = true;
+        document.getElementById('optionTwo').style.display = 'none';
+        document.getElementById('newPassword').style.display = 'none';
+        document.getElementById('password').value='';
+        document.getElementById('optionOne').style.display = '';
+        document.getElementById('optionOne').style.display = '';
+        xhr.open('GET', 'profileData', true);
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                document.getElementById('fullName').value = data.fullName;
+                document.getElementById('username').value = data.username;
+                document.getElementById('email').value = data.email;
+                document.getElementById('mobileNumber').value = data.mobileNumber;
+            }
+        }
+    }
+
+    function changePasswordBtnClick() {
+        document.getElementById('optionOne').style.display = 'none';
+        document.getElementById('newPassword').style.display = '';
+
+    }
+
+    function profileSaveChanges(event) {
+        event.preventDefault();
+        let formData = getProfileFormData();
+        xhr.open('POST', 'postProfileEdit', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+        popperAppear('Profile Edited Successfully');
+        setTimeout(popperDisappear, 2000);
+        cancelBtn();
+    }
+
+    function passwordSaveChanges(event) {
+        event.preventDefault();
+        let formData = getPasswordFormData();
+        xhr.open('POST', 'postChangePassword', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+        popperAppear('Password changed successfully');
+        setTimeout(popperDisappear, 2000);
+        cancelBtn();
+    }
+</script>

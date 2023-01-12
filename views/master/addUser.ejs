@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/productDetails.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/masterHeader', {username: 'MASTER'}); %>
+    <div class="psection_1">
+        
+            <form name="signupForm" method="post" action="/signup" onsubmit="return validateSubmit()">
+                <div class="section_1_2_1">
+                    SIGNUP
+                </div>
+                <div class="sectionErrorMessage">
+                    <%= message %>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="fullName" id="fullName" onblur="inputBlur(0)" onclick="inputClick(0)" onkeydown="return validateInput(event,0)">
+                    <div class="section_1_2_2_2">
+                        Full Name
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="username" id="username" onblur="inputBlur(1)" onclick="inputClick(1)" onkeydown="return validateInput(event,1)">
+                    <div class="section_1_2_2_2">
+                        Username
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="email" id="email" onblur="inputBlur(2)" onclick="inputClick(2)" onkeydown="return validateInput(event,2)">
+                    <div class="section_1_2_2_2">
+                        Email
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="mobileNumber" id="mobileNumber" onblur="inputBlur(3)" onclick="inputClick(3)" onkeydown="return validateInput(event,3)">
+                    <div class="section_1_2_2_2">
+                        Mobile Number
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="password" id="password" onblur="inputBlur(4)" onclick="inputClick(4)" onkeydown="return validateInput(event,4)">
+                    <div class="section_1_2_2_2">
+                        Password
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="cpassword" id="cpassword" onblur="inputBlur(5)" onclick="inputClick(5)" onkeydown="return validateInput(event,5)">
+                    <div class="section_1_2_2_2">
+                        Confirm Password
+                    </div>
+                </div>
+                <div class="padding10"></div>
+                <button type="submit" class="section_1_2_3">
+                    CONTINUE
+                </button>
+            </form>
+        
+    </div>
+    <br><br><br><br><br><br>
+    <script src="/javascripts/addUserVal.js"></script>
+</body>
+</html>

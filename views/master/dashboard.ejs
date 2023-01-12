@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/stylesheets/dashboard.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+<body>
+
+<div class="dash1">
+    <form method="post" action="postReport">
+        <div class="dash11">
+            Report:
+        </div>
+        <div class="dash12">
+            <div class="dash121">
+                From date:
+            </div>
+            <input type="date" class="dash122" name="fromDate" id="fromDate" onchange="fromDateClick()" required>
+        </div>
+        <div class="dash12">
+            <div class="dash121">
+                To date:
+            </div>
+            <input type="date" class="dash122" name="toDate" id="toDate" required>
+        </div>
+        <button class="ButtonFixed blueButtonFixed marginAuto">
+            SUBMIT
+        </button>
+    </form>
+</div>
+<script>
+    let fromDate = document.getElementById('fromDate');
+        let toDate = document.getElementById('toDate');
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth()+1;
+        let days = date.getDate();
+        date = year+"-"+month+"-"+days;
+        fromDate.setAttribute("max",date);
+        toDate.setAttribute("max",date);
+        function fromDateClick(){
+            toDate.setAttribute("min",fromDate.value);
+            if(fromDate.value>toDate.value){
+                toDate.value=fromDate.value;
+            }
+        }
+</script>

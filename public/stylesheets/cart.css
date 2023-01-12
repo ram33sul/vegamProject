@@ -1,0 +1,232 @@
+.sect_1{
+    max-width: 98vw;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 100px;
+}
+
+    .sect_1_1{
+        width: fit-content;
+        height: fit-content;
+        border: 1px solid gray;
+        margin-top: 10px;
+        border-radius: 5px;
+        transition: all 0.2s;
+    }
+    .sect{
+        width: fit-content;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            padding-right: 30px;
+    }
+        .sect_1_1_1{
+            width: 150px;
+            height: 150px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: silver;
+        }
+        .sect_1_1_2{
+            margin-left: 20px;
+            width: fit-content;
+            height: fit-content;
+        }
+            .sect_1_1_2_1{
+                font-weight: bolder;
+                font-size: 20px;
+            }
+            .sect_1_1_2_2{
+                font-size: 15px;
+                opacity: 0.6;
+            }
+            .sect_1_1_2_3{
+                display: flex;
+                margin-top: 10px;
+            }
+                .sect_1_1_2_3_1{
+                    background-color: rgb(230, 230, 230);
+                    padding: 2px 5px 2px 5px;
+                    text-align: center;
+                    border-radius: 5px;
+                    height: fit-content;
+                    cursor: pointer;
+                }
+                .sect_1_1_2_3_2{
+                    margin-left: 10px;
+                    display: flex;
+                }
+                .sect_1_1_2_3_2_1{
+                    background-color: rgb(230, 230, 230);
+                    padding: 2px 5px 2px 5px;
+                    text-align: center;
+                    border-radius: 5px;
+                    height: fit-content;
+                }
+                .sect_1_1_2_3_2_2{
+                    border-radius: 5px;
+                    width: fit-content;
+                    height: fit-content;
+                    display: flex;
+                    overflow: hidden;
+                    margin-left: 5px;
+                    margin-top: 1px;
+                    border: 1px solid #0197A6;
+                }
+                    .sect_1_1_2_3_2_2_1{
+                        background-color: #0197A6;
+                        padding: 0px 5px 0px 5px;
+                        color: white;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                    .sect_1_1_2_3_2_2_1:active{
+                        background-color: rgb(14, 195, 14);
+                    }
+                    .sect_1_1_2_3_2_2_2{
+                        padding: 0px 5px 0px 5px;
+                        font-weight: bold;
+                    }
+        .sect_1_1_2_4{
+            display: flex;
+            margin-top: 10px;
+            flex-wrap: nowrap;
+            width: 100%;
+            gap: 5px;
+            overflow: hidden;
+            height: 0px;
+            transition: all 0.2s;
+        }
+            .sect_1_1_2_4_1 {
+                width: 32px;
+                padding: 5px 0px 5px 0px;
+                border: 1px solid gray;
+                border-radius: 50%;
+                font-weight: bold;
+                text-align: center;
+                height: fit-content;
+                cursor: pointer;
+            }
+        .sect_1_1_2_5{
+            font-weight: bolder;
+            font-size: 20px;
+            margin-top: 10px;
+            width: fit-content;
+        }
+
+    .sect_extra{
+        display: flex;
+        margin-left: 10px;
+        width: fit-content;
+        max-height: 100%;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+    }
+        .sect_extra_1{
+            background-color: red;
+            padding: 5px 30px 5px 30px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .sect_extra_1:hover{
+            opacity: 0.7;
+        }
+        .sect_extra_2{
+            border: 1px solid #0197A6;
+            padding: 5px 30px 5px 30px;
+            border-radius: 5px;
+            color: #0197A6;
+            margin-left: 10px;
+            transition: all 0.2;
+            cursor: pointer;
+        }
+        .sect_extra_2:hover{
+            opacity: 0.7;
+        }
+                    
+.sect_1_2{
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+    margin-left: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+    .sect_1_2_1{
+        font-size: 15px;
+        display: flex;        
+        width: fit-content;
+        height: fit-content;
+    }
+        .sect_1_2_1_1{
+            outline: none;
+            border: 1px solid #0197A6;
+            border-radius: 5px;
+            padding: 5px 10px 5px 10px;
+            width: 200px;
+        }
+        .sect_1_2_1_2{
+            width: fit-content;
+            height: fit-content;
+            padding: 5px 20px 5px 20px;
+            background-color: #0197A6;
+            color: white;
+            font-weight: bold;
+            margin-left: 5px;
+            border-radius: 5px;
+            border: 1px solid #0197A6;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .sect_1_2_1_2:hover{
+            background-color: white;
+            color: #0197A6;
+        }
+    .sect_1_2_2{
+        font-weight: bolder;
+        font-size: 20px;
+        margin-top: 10px;
+        width: fit-content;
+        height: fit-content;
+    }
+    .sect_1_2_3{
+        font-size: 15px;
+        margin-top: 10px;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .sect_1_2_4{
+        width: 100%;
+        height: fit-content;
+        font-size: 17px;
+        background-color: #0197A6;
+        border: 1px solid #0197A6;
+        color: white;
+        font-weight: bold;
+        padding: 5px 0px 5px 0px;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .sect_1_2_4:hover{
+        background-color: white;
+        color: #0197A6;
+    }
+

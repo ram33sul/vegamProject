@@ -1,0 +1,138 @@
+.userHeader{
+    background-image: linear-gradient(to bottom right, #0197A6, #025c64);
+}
+.adminHeader{
+    background-image: linear-gradient(to bottom right, #9CE207, #2D6303);
+}
+.masterAdminHeader{
+    background-image: linear-gradient(to bottom right, #FF530A, #852800);
+}
+.section_1 {
+    width: 100vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin: auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+}
+    .section_1_1 {
+        background-image: url(../images/vegam_logo_white.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100px;
+        height: 50px;
+        margin-top: 30px;
+        transform: translateY(-50%);
+    }
+    .section_1_2 {
+        display: flex;
+        width: 65vw;
+        max-width: fit-content;
+        height: fit-content;
+        margin-top: 30px;
+        transform: translateY(-50%);
+        font-size: 17px;
+        justify-content: space-between;
+    }
+        .section_1_2_1 {
+            width: fit-content;
+            height: fit-content;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+            display: flex;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .section_1_2_1:hover {
+            transform: scale(1.2);
+            
+        }
+        .section_1_2_1:active {
+            transform: scale(0.8);
+        }
+        .logo {
+            width: 15px;
+            height: 15px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: none;
+            cursor: pointer;
+        }
+        .logo:hover {
+            transform: scale(1.2);
+        }
+            .categoryLogo {
+                background-image: url(../images/category_logo.png);
+            }
+            .cartLogo {
+                background-image: url(../images/cart_logo.png);
+            }
+            .profileLogo {
+                background-image: url(../images/profile_logo.png);
+            }
+
+.section_2 {
+    box-sizing: border-box;
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+    color: black;
+    display: none;
+    border: 2px solid rgb(230,230,230);
+    transition: all 0.2s;
+    margin-top: 8px;
+}
+    .section_2_1 {
+        padding: 3px;
+        display: flex;
+        padding-left: 8px;
+        opacity: 0.6;
+        cursor: pointer;
+    }
+    .section_2_1:hover {
+        opacity: 1;
+    }
+        .section_2_1_1 {
+            padding-left: 8px;
+            padding-right: 10px;
+        }
+
+        .categoryDropDown2 {
+            border: 2px solid rgb(240, 240, 240);
+            display: none;
+        }
+@media  screen and (max-width: 500px) {
+    .section_1_2_1{
+        display: none;
+    }
+    .logo{
+        display: block;
+    }
+    .section_1{
+        height: 40px;
+    }
+    .section_1_1{
+        height: 40px;
+        margin-top: 20px;
+    }
+    .section_1_2{
+        margin-top: 20px;
+        max-width: 150px;
+    }
+
+
+}
+

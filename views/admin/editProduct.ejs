@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/productDetails.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('../partials/adminHeader', {outletName}); %>
+        <div class="psection_1">
+            <div class="psection_1_1">
+                EDIT PRODUCT
+                <div class="errorMessage">
+                    <%= errorMessage %>
+                </div>
+                <div class="successMessage">
+                    <%= successMessage %>
+                </div>
+            </div>
+            <form method="post" action="/admin/editProduct?id=<%= data._id %>" name="addProductForm"
+                enctype="multipart/form-data" onsubmit="return inputSubmit()">
+                <div class="psection_1_2">
+                    CATEGORY: <div class="errorMessage required category"></div>
+                    <input type="text" style="display: none;" id="category" class="input" name="category" value="none">
+                </div>
+                <div class="psection_1_3">
+                    <div class="selectOption category" id="shirt" onclick="valueSelected('category','shirt')">
+                        SHIRT
+                    </div>
+                    <div class="selectOption category" id="top" onclick="valueSelected('category','top')">
+                        TOP
+                    </div>
+                    <div class="selectOption category" id="tshirt" onclick="valueSelected('category','tshirt')">
+                        T-SHIRT
+                    </div>
+                    <div class="selectOption category" id="pant" onclick="valueSelected('category','pant')">
+                        PANT
+                    </div>
+                </div>
+                <div class="psection_1_2">
+                    COLOR: <div class="errorMessage required color"></div>
+                    <input type="text" style="display: none;" class="input" id="color" name="color" value="none">
+                </div>
+                <div class="psection_1_3">
+                    <div class="selectOption color" id="white" onclick="valueSelected('color','white')">
+                        WHITE
+                    </div>
+                    <div class="selectOption color" id="green" onclick="valueSelected('color','green')">
+                        GREEN
+                    </div>
+                    <div class="selectOption color" id="blue" onclick="valueSelected('color','blue')">
+                        BLUE
+                    </div>
+                    <div class="selectOption color" id="red" onclick="valueSelected('color','red')">
+                        RED
+                    </div>
+                    <div class="selectOption color" id="pink" onclick="valueSelected('color','pink')">
+                        PINK
+                    </div>
+                    <div class="selectOption color" id="yellow" onclick="valueSelected('color','yellow')">
+                        YELLOW
+                    </div>
+                </div>
+                <div class="psection_1_2">
+                    PATTERN: <div class="errorMessage required pattern"></div>
+                    <input type="text" style="display: none;" class="input" id="pattern" name="pattern" value="none">
+                </div>
+                <div class="psection_1_3">
+                    <div class="selectOption pattern" id="plain" onclick="valueSelected('pattern','plain')">
+                        PLAIN
+                    </div>
+                    <div class="selectOption pattern" id="stripped" onclick="valueSelected('pattern','stripped')">
+                        STRIPPED
+                    </div>
+                    <div class="selectOption pattern" id="checked" onclick="valueSelected('pattern','checked')">
+                        CHECKED
+                    </div>
+                    <div class="selectOption pattern" id="floral" onclick="valueSelected('pattern','floral')">
+                        FLORAL
+                    </div>
+                    <div class="selectOption pattern" id="printed" onclick="valueSelected('pattern','printed')">
+                        PRINTED
+                    </div>
+                    <div class="selectOption pattern" id="textured" onclick="valueSelected('pattern','textured')">
+                        TEXTURED
+                    </div>
+                </div>
+                <div class="psection_1_2">
+                    GENDER: <div class="errorMessage required gender"></div>
+                    <input type="text" style="display: none;" class="input" id="gender" name="gender" value="none">
+                </div>
+                <div class="psection_1_3">
+                    <div class="selectOption gender" id="male" onclick="valueSelected('gender','male')">
+                        MALE
+                    </div>
+                    <div class="selectOption gender" id="female" onclick="valueSelected('gender','female')">
+                        FEMALE
+                    </div>
+                </div>
+                <div class="psection_1_2">
+                    PRICE: <div class="errorMessage required" id="priceError"></div>
+                </div>
+                <input type="text" class="psection_1_4 input" value="<%= data.actualPrice %>" placeholder="Price in rupees"
+                    id="price" name="price" onkeydown="return inputVal(event,'priceError')">
+
+                <div class="psection_1_2">
+                    OFFER: <div class="errorMessage required" id="offerError"></div>
+                </div>
+                <input type="text" class="psection_1_4 input" value="<%= data.offer %>" placeholder="Offer in percentage" id="offer" name="offer"
+                    onkeydown="return inputVal(event,'offerError')">
+
+                <div class="uploadImage">
+                    <div class="_1">
+                        <div class="_1_1 imageUploadErrorCross"
+                            style="background-image: url('../images/products/<%= data._id %>0.jpg');"></div>
+                        <div class="_1_1 imageUploadErrorCross"
+                            style="background-image: url('../images/products/<%= data._id %>1.jpg');"></div>
+                        <div class="_1_1 imageUploadErrorCross"
+                            style="background-image: url('../images/products/<%= data._id %>2.jpg');"></div>
+                        <div class="_1_1 imageUploadErrorCross"
+                            style="background-image: url('../images/products/<%= data._id %>3.jpg');"></div>
+                    </div>
+                    <div class="_2">
+                        <input type="file" name="image0" class="_2_1 imageUploadError" onchange="imageAdded(event,0)"
+                            value="hi">
+                        <input type="file" name="image1" class="_2_1 imageUploadError" onchange="imageAdded(event,1)"
+                            value="hi">
+                        <input type="file" name="image2" class="_2_1 imageUploadError" onchange="imageAdded(event,2)"
+                            value="hi">
+                        <input type="file" name="image3" class="_2_1 imageUploadError" onchange="imageAdded(event,3)"
+                            value="hi">
+                    </div>
+                </div>
+
+                <div class="psection_1_2">
+                    SIZES AND QUANTITY:
+                </div>
+                <div class="psection_1_3">
+                    <div class="psection_1_3_3">
+                        S
+                    </div>
+                    <div class="psection_1_3_1">:</div>
+                    <input type="text" id="sQuantity" name="s" value="<%= data.stock.s %>" class="psection_1_3_2 input"
+                        onkeydown="return inputVal(event,'sQuantityError')">
+                    <div class="errorMessage required" id="sQuantityError"></div>
+                </div>
+                <div class="psection_1_3">
+                    <div class="psection_1_3_3">
+                        M
+                    </div>
+                    <div class="psection_1_3_1">:</div>
+                    <input type="text" id="mQuantity" name="m" value="<%= data.stock.m %>" class="psection_1_3_2 input"
+                        onkeydown="return inputVal(event,'mQuantityError')">
+                    <div class="errorMessage required" id="mQuantityError"></div>
+                </div>
+                <div class="psection_1_3">
+                    <div class="psection_1_3_3">
+                        L
+                    </div>
+                    <div class="psection_1_3_1">:</div>
+                    <input type="text" id="lQuantity" name="l" value="<%= data.stock.l %>" class="psection_1_3_2 input"
+                        onkeydown="return inputVal(event,'lQuantityError')">
+                    <div class="errorMessage required" id="lQuantityError"></div>
+                </div>
+                <div class="psection_1_3">
+                    <div class="psection_1_3_3">
+                        XL
+                    </div>
+                    <div class="psection_1_3_1">:</div>
+                    <input type="text" id="xlQuantity" name="xl" value="<%= data.stock.xl %>"
+                        class="psection_1_3_2 input" onkeydown="return inputVal(event,'xlQuantityError')">
+                    <div class="errorMessage required" id="xlQuantityError"></div>
+                </div>
+                <button class="blueButton alignRight" type="submit">
+                    SAVE CHANGES
+                </button>
+            </form>
+        </div>
+        <br><br><br><br><br><br>
+        <input id="categoryPrev" value="<%= data.category %>" style="display: none;">
+        <input id="colorPrev" value="<%= data.color %>" style="display: none;">
+        <input id="patternPrev" value="<%= data.pattern %>" style="display: none;">
+        <input id="genderPrev" value="<%= data.gender %>" style="display: none;">
+        <script>
+            let count;
+            function valueSelected(field, selection) {
+                let collection = document.getElementsByClassName(field);
+                for (i = 0; i < collection.length; i++) {
+                    collection[i].style.backgroundColor = 'white';
+                    collection[i].style.color = 'black';
+                }
+                document.getElementById(selection).style.backgroundColor = 'black';
+                document.getElementById(selection).style.color = 'white';
+                selection = selection.toUpperCase();
+                document.getElementById(field).value = selection;
+                document.getElementsByClassName(field)[0].innerHTML = '';
+            }
+
+            let category = document.getElementById('categoryPrev').value.toLowerCase();
+            let color = document.getElementById('colorPrev').value.toLowerCase();
+            let pattern = document.getElementById('patternPrev').value.toLowerCase();
+            let gender = document.getElementById('genderPrev').value.toLowerCase();
+            valueSelected('category', category);
+            valueSelected('color', color);
+            valueSelected('pattern', pattern);
+            valueSelected('gender', gender);
+
+
+
+            function inputSubmit() {
+                let count = 0;
+                let collection = document.getElementsByClassName('input');
+                let collection2 = document.getElementsByClassName('imageUploadError');
+                for (i = 0; i < collection.length; i++) {
+                    let value = collection[i].value;
+                    if (value == 'none') {
+                        document.getElementsByClassName('required')[i].innerHTML = '(required)';
+                    }
+                    else if (value.length == 0) {
+                        document.getElementsByClassName('required')[i].innerHTML = '(required)';
+                    }
+                    else {
+                        document.getElementsByClassName('required')[i].innerHTML = '';
+                        count++;
+                    }
+                }
+                for (i = 0; i < collection2.length; i++) {
+                    let value = collection2[i].value;
+                    if (value.length == 0) {
+                        document.getElementById('imageUploadError').innerHTML = '(required)';
+                        break;
+                    }
+                    else {
+                        document.getElementById('imageUploadError').innerHTML = '';
+                        count++;
+                    }
+                }
+                for (i = 0; i < collection2.length; i++) {
+                    let value = collection2[i].value;
+                    if (value.length == 0) {
+                        document.getElementsByClassName('imageUploadErrorCross')[i].style.backgroundImage = 'none';
+                        document.getElementsByClassName('imageUploadErrorCross')[i].innerHTML = 'X';
+                    }
+                    else {
+                        document.getElementsByClassName('imageUploadErrorCross')[i].innerHTML = '';
+                    }
+                }
+                if (count != collection.length + collection2.length) {
+                    return false;
+                }
+            }
+
+            function imageAdded(event, id) {
+                imagePath = 'url(' + URL.createObjectURL(event.target.files[0]) + ')';
+                collection = document.getElementsByClassName('imageUploadErrorCross');
+                value = document.getElementsByClassName('imageUploadError')[id].value;
+                collection[id].innerHTML = '';
+                collection[id].style.backgroundImage = imagePath;
+            }
+
+            function inputVal(event, id) {
+                var k = event.key;
+                k = k.codePointAt(0);
+                if (k == 66) {
+                    document.getElementById(id).innerHTML = '';
+                    return true;
+                }
+                else if (k >= 48 && k <= 57) {
+                    document.getElementById(id).innerHTML = '';
+                    return true;
+                }
+                else {
+                    document.getElementById(id).innerHTML = '(invalid input)';
+                    return false;
+                }
+            }
+
+            function inputKeyPress(id) {
+                document.getElementById(id).innerHTML = '';
+            }
+
+        </script>
+        <script defer src="https://cdn.crop.guide/loader/l.js?c=NLBYPL"></script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+.ahsection_1 {
+    width: fit-content;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+    .ahsection_1_1 {
+        border: 1px solid gray;
+        width: 95vw;
+        max-width: 1200px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: fit-content;
+        padding: 5px;
+        margin-top: 30px;
+    }
+        .ahsection_1_1_1 {
+            background-color: silver;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 90px;
+            width: 90px;
+            align-self: center;
+        }
+        .ahsection_1_1_2 {
+            height: fit-content;
+            width: fit-content;
+        }
+            .ahsection_1_1_2_1 {
+                width: fit-content;
+                height: fit-content;
+                display: flex;
+                gap: 5px;
+                padding: 2px;
+            }
+                .ahsection_1_1_2_1_1 {
+                    height: fit-content;
+                    width: fit-content;
+                    font-weight: lighter;
+                    font-size: 15px;
+                    color: gray;
+                }
+                .ahsection_1_1_2_1_2 {
+                    height: fit-content;
+                    width: fit-content;
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+        .ahsection_1_1_3 {
+            width: fit-content;
+            height: fit-content;
+        }
+            .ahsection_1_1_3_1 {
+                height: fit-content;
+                width: fit-content;
+                font-weight: lighter;
+                font-size: 15px;
+                color: gray;
+            }
+            .ahsection_1_1_3_2 {
+                border: 1px solid gray;
+                height: fit-content;
+                width: fit-content;
+            }
+                .ahsection_1_1_3_2_1 {
+                    height: fit-content;
+                    width: 150px;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1px 5px 1px 5px;
+                }
+                    .ahsection_1_1_3_2_1_1 {
+                        height: fit-content;
+                        width: fit-content;
+                        font-weight: lighter;
+                        font-size: 14px;
+                        color: gray;
+                    }
+                    .ahsection_1_1_3_2_1_2 {
+                        height: fit-content;
+                        width: fit-content;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+        .ahsection_1_1_4 {
+            height: fit-content;
+            width: fit-content;
+        }
+            .ahsection_1_1_4_1 {
+                height: fit-content;
+                width: fit-content;
+                font-weight: lighter;
+                font-size: 15px;
+                color: gray;
+                padding: 3px 5px 3px 5px;
+            }
+            .ahsection_1_1_4_2 {
+                height: fit-content;
+                width: fit-content;
+                font-weight: bold;
+                font-size: 15px;
+                padding: 3px 5px 3px 5px;
+            }
+            .ahsection_1_1_4_3 {
+                height: fit-content;
+                width: fit-content;
+                font-weight: bold;
+                font-size: 15px;
+                color: green;
+            }
+        .ahsection_1_1_5 {
+            align-self: center;
+            height: fit-content;
+            padding-right: 10px;
+        }

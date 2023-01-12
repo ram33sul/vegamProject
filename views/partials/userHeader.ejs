@@ -1,0 +1,199 @@
+<link rel="stylesheet" href="assets/css/skins/skin-demo-8.css">
+<link rel="stylesheet" href="assets/css/demos/demo-8.css">
+        <header class="header">
+            <div class="header-bottom sticky-header">
+                <div class="container">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler">
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
+                        </button>
+                        
+                        <a href="index.html" class="logo">
+                            <img src="images/vegam_logo_orange.png" alt="Vegam Logo" width="82" height="20">
+                        </a>
+                    </div>
+                    <div class="header-center" style="margin-right: auto;">
+                        <nav class="main-nav">
+                            <% let indexActive = '';
+                                let productsActive = '';
+                                let profileActive = '';
+                                let loginActive = '';
+                                let ordersActive = '';
+                            if(page=='index'){ 
+                                indexActive = 'active';
+                            } else if(page=='products'||page=='productDetails') {
+                                productsActive = 'active';
+                            } else if(page=='profile') {
+                                profileActive = 'active';
+                            } else if(page == 'login'){
+                                loginActive = 'active';
+                            } else if (page == 'orders') {
+                                ordersActive = 'active';
+                            } %>
+                            <ul class="menu sf-arrows">
+                                <li class="megamenu-container <%= indexActive %>">
+                                    <a href="/" class="sf-with-ul">Home</a>
+                                </li>
+                                <li class="megamenu-container <%= productsActive %>">
+                                    <a href="products" class="sf-with-ul">Products</a>
+                                </li>
+                                <% if(page!='login'&&page!='sigup'&&userData){ %>
+                                <li class="megamenu-container <%= ordersActive %>">
+                                    <a href="orders" class="sf-with-ul">Orders</a>
+                                </li>
+                                <li class="megamenu-container <%= profileActive %>">
+                                    <a href="profile" class="sf-with-ul">Profile</a>
+                                </li>
+                                <li class="megamenu-container">
+                                    <a href="logout" class="sf-with-ul">Logout</a>
+                                </li>
+                                <% } else { %>
+                                <li class="megamenu-container <%= loginActive %>">
+                                    <a href="Login" class="sf-with-ul">Login</a>
+                                </li>
+                                <% } %>
+                            </ul><!-- End .menu -->
+                        </nav><!-- End .main-nav -->
+                    </div><!-- End .header-left -->
+
+                    <div class="header-right">
+                        <div class="header-search">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="#" method="get">
+                                <div class="header-search-wrapper">
+                                    <label for="q" class="sr-only">Search</label>
+                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search in..." required oninput="search()">
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
+
+                        <a href="#" class="wishlist-link">
+                            <i class="icon-heart-o"></i>
+                            <span class="wishlist-count">3</span>
+                        </a>
+                        <% if(page!='login'&&page!='signup'&&cartData){ %>
+                        <div class="dropdown cart-dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                <i class="icon-shopping-cart"></i>
+                                <span class="cart-count"><%= cartData.cart.length %></span>
+                                <span class="cart-txt">₹ <%= cartData.total.toFixed(2) %></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-cart-products">
+
+                                    <% 
+                                    if(cartData){
+                                    cartData.cart.forEach((data) => { %>
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <a href="productDetails?id=<%= data.product %>"><%= data.name %></a>
+                                            </h4>
+
+                                            <span class="cart-product-info">
+                                                <span class="cart-product-qty"><%= data.quantity %></span>
+                                                x ₹ <%= data.price %>
+                                            </span>
+                                        </div><!-- End .product-cart-details -->
+
+                                        <figure class="product-image-container">
+                                            <a href="productDetails?id=<%= data.product %>" class="product-image">
+                                                <img src="assets/images/products/cart/product-1.jpg" alt="product">
+                                            </a>
+                                        </figure>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                    </div><!-- End .product -->
+                                    <% }) } %>
+
+
+                                    
+                                
+                                </div><!-- End .cart-product -->
+
+                                <div class="dropdown-cart-total">
+                                    <span>Total</span>
+
+                                    <span class="cart-total-price">₹ <%= cartData.total.toFixed(2) %></span>
+                                </div><!-- End .dropdown-cart-total -->
+
+                                <div class="dropdown-cart-action">
+                                    <a href="cart" class="btn btn-primary">View Cart</a>
+                                    <a href="checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .dropdown-cart-total -->
+                            </div><!-- End .dropdown-menu -->
+                        </div><!-- End .cart-dropdown -->
+                        <% } %>
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div><!-- End .header-bottom -->
+        </header><!-- End .header -->
+
+        <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+            <form action="#" method="get" class="mobile-search">
+                <label for="mobile-search" class="sr-only">Search</label>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
+            
+            <nav class="mobile-nav">
+                <ul class="mobile-menu">
+                    <li class="<%= indexActive %>">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="<%= productsActive %>">
+                        <a href="products">Products</a>
+                    </li>
+                    <li class="<%= ordersActive %>">
+                        <a href="orders">Orders</a>
+                    </li>
+                    <% if(page!='login'&&page!='signup'&&userData){ %>
+                    <li class="<%= profileActive %>">
+                        <a href="profile">Profile</a>
+                    </li>
+                    <li class="">
+                        <a href="logout">Logout</a>
+                    </li>
+                    <% } else { %>
+                    <li class="<%= loginActive %>">
+                        <a href="Login">Login</a>
+                    </li>
+                    <% } %>
+                </ul>
+            </nav><!-- End .mobile-nav -->
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div><!-- End .social-icons -->
+        </div><!-- End .mobile-menu-wrapper -->
+    </div><!-- End .mobile-menu-container -->
+
+        <script src="assets/js/demos/demo-8.js"></script>
+        <script>
+            function search(){
+                if('<%= page %>'=='products'){
+                    let searchInput = document.getElementById('q').value.trim().toLowerCase();
+                    let productNames = document.getElementsByClassName('productNameForSearch');
+                    let products = document.getElementsByClassName('productCardForSearch');
+                    for(i=0;i<products.length;i++){
+                        let productName = productNames[i].innerHTML.trim().toLowerCase();
+                        if(productName.includes(searchInput)){
+                            products[i].style.display = "";
+                        }
+                        else{
+                            products[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>

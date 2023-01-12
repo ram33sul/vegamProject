@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/userDetails.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="mudsection_1">
+        <form action="postEditAdmin?id=<%= data._id %>" method="post">
+        <div class="mudsection_1_1">
+            USER DETAILS
+        </div>
+        <div class="mudsection_1_2">
+            ID: <%= data._id %>
+        </div>
+        <div class="mudsection_1_2" >
+            OUTLET NAME:
+        </div>
+        <input type="text" class="mudsection_1_3" name="outletName" value="<%= data.outletName %>" required>
+        <div class="mudsection_1_2">
+            REGISTRATION NUMBER:
+        </div>
+        <input type="text" class="mudsection_1_3" name="regNo" value="<%= data.regNo %>" readonly>
+        <div class="mudsection_1_2">
+            GST NUMBER
+        </div>
+        <input type="text" class="mudsection_1_3" name="gstNo" value="<%= data.gstNo %>" readonly>
+        <div class="mudsection_1_2">
+            GPS COORDINATES:
+        </div>
+        <input type="text" class="mudsection_1_3" name="gps" value="<%= data.gps %>" required>
+        <div class="mudsection_1_2">
+            EMAIL:
+        </div>
+        <input type="text" class="mudsection_1_3" name="email" value="<%= data.email %>" readonly>
+        <button class="greenButton alignRight">
+            SAVE CHANGES
+        </button>
+        </form>
+    </div>
+    <div class="mudsection_2">
+        <div class="blueButton">
+            VIEW COMPLAINTS
+        </div>
+        <a href="adminOrders?id=<%= data._id %>">
+        <div class="blueButton">
+            VIEW ORDERS
+        </div>
+        </a>
+    </div>
+</body>
+</html>

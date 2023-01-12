@@ -1,0 +1,191 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/Login.css' />
+    <title>Login</title>
+</head>
+<body>
+    <div class="section_1 userLogin">
+        <div class="section_1_1">
+            <div class="section_1_1_1">
+
+            </div>
+            <div class="section_1_1_2">
+                <div class="section_1_1_2_1" onclick="history.back()">
+                    GO BACK
+                </div>
+            </div>
+        </div>
+        <div class="section_1_2">
+            <form name="loginForm" method="post" action="/login">
+                <div class="section_1_2_1">
+                    LOGIN
+                </div>
+                <div class="sectionErrorMessage">
+                    <%= message %>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="username" id="email" onblur="inputBlur(0)" onclick="inputClick(0)">
+                    <div class="section_1_2_2_2">
+                        Email or Username
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="password" id="password" onblur="inputBlur(1)" onclick="inputClick(1)">
+                    <div class="section_1_2_2_2">
+                        Password
+                    </div>
+                </div>
+                <button type="submit" class="section_1_2_3">
+                    CONTINUE
+                </button>
+                <div class="section_1_2_4">
+                    OR
+                </div>
+                <a href="signup">
+                <div class="section_1_2_3">
+                    CREATE NEW ACCOUNT
+                </div>
+                </a>
+                <div class="section_1_2_5">
+                    Forgot Password?
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function inputClick(id){
+            document.getElementsByClassName('section_1_2_2_2')[id].style.opacity='1';
+            document.getElementsByClassName('section_1_2_2_2')[id].style.fontSize='14px';
+            document.getElementsByClassName('section_1_2_2_2')[id].style.top='-20px';
+        }
+        function inputBlur(id){
+            if(document.getElementsByClassName('section_1_2_2_1')[id].value.length==0){
+                document.getElementsByClassName('section_1_2_2_2')[id].style.opacity='0.7';
+                document.getElementsByClassName('section_1_2_2_2')[id].style.fontSize='17px';
+                document.getElementsByClassName('section_1_2_2_2')[id].style.top='0';
+            }
+            else{
+                document.getElementsByClassName('section_1_2_2_2')[id].style.color='lightgreen';
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Login</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <% 
+            let loginTab;
+            let signupTab;
+            if(page=='login'){
+                loginTab = 'show active';
+                signupTab = '';
+            } else {
+                loginTab = '';
+                signupTab = 'show active';
+            } %>
+
+            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('assets/images/backgrounds/login-bg.jpg')">
+            	<div class="container">
+            		<div class="form-box">
+            			<div class="form-tab">
+	            			<ul class="nav nav-pills nav-fill" role="tablist">
+							    <li class="nav-item">
+							        <a class="nav-link <%= loginTab %>" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Log In</a>
+							    </li>
+							    <li class="nav-item">
+							        <a class="nav-link <%= signupTab %>" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
+							    </li>
+							</ul>
+							<div class="tab-content">
+							    <div class="tab-pane fade <%= loginTab %>" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                                    <div class="errorMessage"><%= message %></div>
+							    	<form action="login" method="post">
+							    		<div class="form-group">
+							    			<label for="singin-email-2">Username or email address *</label>
+							    			<input type="text" class="form-control" id="singin-email-2" name="username" required>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-group">
+							    			<label for="singin-password-2">Password *</label>
+							    			<input type="password" class="form-control" id="singin-password-2" name="password" required>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-footer">
+							    			<button type="submit" class="btn btn-outline-primary-2">
+			                					<span>LOG IN</span>
+			            						<i class="icon-long-arrow-right"></i>
+			                				</button>
+
+
+
+											<a href="#" class="forgot-link">Forgot Your Password?</a>
+							    		</div><!-- End .form-footer -->
+							    	</form>
+							    	
+							    </div><!-- .End .tab-pane -->
+							    <div class="tab-pane fade <%= signupTab %>" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
+
+                                    <div class="errorMessage"><%= message %></div>
+
+                                    <form action="signup" method="post">
+                                        <div class="form-group">
+							    			<label for="register-email-2">Full name *</label>
+							    			<input type="text" class="form-control" id="fullName" name="fullName" required>
+							    		</div><!-- End .form-group -->
+
+                                        <div class="form-group">
+							    			<label for="register-email-2">Username *</label>
+							    			<input type="text" class="form-control" id="username" name="username" required>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-group">
+							    			<label for="register-email-2">Your email address *</label>
+							    			<input type="email" class="form-control" id="email" name="email" required>
+							    		</div><!-- End .form-group -->
+
+                                        <div class="form-group">
+							    			<label for="register-email-2">Mobile number *</label>
+							    			<input type="number" class="form-control" id="mobileNumber" name="mobileNumber" required>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-group">
+							    			<label for="register-password-2">Password *</label>
+							    			<input type="password" class="form-control" id="password" name="password" required>
+							    		</div><!-- End .form-group -->
+
+                                        <div class="form-group">
+							    			<label for="register-password-2">Confirm password *</label>
+							    			<input type="password" class="form-control" id="cpassword" name="cpassword" required>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-footer">
+							    			<button type="submit" class="btn btn-outline-primary-2">
+			                					<span>SIGN UP</span>
+			            						<i class="icon-long-arrow-right"></i>
+			                				</button>
+							    		</div><!-- End .form-footer -->
+							    	</form>
+							    </div><!-- .End .tab-pane -->
+							</div><!-- End .tab-content -->
+						</div><!-- End .form-tab -->
+            		</div><!-- End .form-box -->
+            	</div><!-- End .container -->
+            </div><!-- End .login-page section-bg -->
+        </main><!-- End .main -->

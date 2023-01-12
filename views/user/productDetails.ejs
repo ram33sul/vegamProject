@@ -1,0 +1,253 @@
+<link rel="stylesheet" href="/stylesheets/upd.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<div class="successMessagePopper" id="successMessagePopper">
+    Product Added to Cart
+</div>
+
+<div class="successMessagePopper">
+    Product Added to Cart
+</div>
+<div class="updsection_1">
+    <div class="updsection_1_1">
+
+        <div class="updsection_1_1_1">
+            <div class="updsection_1_1_1_1" style="background-image: url('../images/products/<%= data._id %>0.jpg');" id="img1" onclick="imageZoom(event,'img1')">
+            </div>
+        </div>
+
+        <div class="updsection_1_1_1">
+            <div class="updsection_1_1_1_1" style="background-image: url('../images/products/<%= data._id %>1.jpg');" id="img2" onclick="imageZoom(event,'img2')">
+            </div>
+        </div>
+        <div class="updsection_1_1_1">
+            <div class="updsection_1_1_1_1" style="background-image: url('../images/products/<%= data._id %>2.jpg');" id="img3" onclick="imageZoom(event,'img3')">
+            </div>
+        </div>
+        <div class="updsection_1_1_1">
+            <div class="updsection_1_1_1_1" style="background-image: url('../images/products/<%= data._id %>3.jpg');" id="img4" onclick="imageZoom(event,'img4')">
+            </div>
+        </div>
+    </div>
+    <div class="updsection_1_2">
+        <div class="updsection_1_2_1">
+            <%= data.outletName %>
+        </div>
+        <div class="updsection_1_2_2">
+            <%= data.color %>
+                <%= data.pattern %>
+                    <%= data.gender %>
+                        <%= data.category %>
+        </div>
+        <% if(data.offer > 0){ %>
+            <div class="display_flex">
+                <div class="updsection_1_2_3" style="opacity: 0.5;font-weight:lighter;text-decoration:line-through;font-size:20px;margin-top:13px;padding-right:10px;">
+                    Rs. <%= data.actualPrice %>
+                </div>
+                <div class="updsection_1_2_3">
+                    Rs. <%= data.price %>
+                </div>
+            </div>
+            <% } else { %>
+        <div class="updsection_1_2_3">
+            Rs. <%= data.price %>
+        </div>
+        <% } %>
+        <div class="updsection_1_2_4">
+            inclusive of all taxes
+        </div>
+        <% if(data.inCart==false){ %>
+            <div id="sizeWrapper">
+                <div class="updsection_1_2_5 display_flex">
+                    SELECT SIZE : <div class="errorMessage" id="sizeError" style="display: none;">Please select a size
+                    </div>
+                </div>
+                <div class="updsection_1_2_6">
+                    <% small='' ; medium='' ; large='' ; xlarge='' ; sonclick='S' ; monclick='M' ; lonclick='L' ;
+                        xlonclick='XL' ; if(data.stock.s<=0){ small='opacity3' ; sonclick='none' ; }
+                        if(data.stock.m<=0){ medium='opacity3' ; monclick='none' ; } if(data.stock.l<=0){
+                        large='opacity3' ; lonclick='none' ; } if(data.stock.xl<=0){ xlarge='opacity3' ;
+                        xlonclick='none' ; } %>
+                        <input value="none" id="size" style="display: none;">
+                        <div class="updsection_1_2_6_1 <%= small %>" id="S" onclick="sizeSelect('<%= sonclick %>')">
+                            S
+                        </div>
+                        <div class="updsection_1_2_6_1 <%= medium %>" id="M" onclick="sizeSelect('<%= monclick %>')">
+                            M
+                        </div>
+                        <div class="updsection_1_2_6_1 <%= large %>" id="L" onclick="sizeSelect('<%= lonclick %>')">
+                            L
+                        </div>
+                        <div class="updsection_1_2_6_1 <%= xlarge %>" id="XL" onclick="sizeSelect('<%= xlonclick %>')">
+                            XL
+                        </div>
+                </div>
+            </div>
+            <% } %>
+                <div class="updsection_1_2_7">
+                    <% if(userData){ %>
+                    <% if(data.inCart){ %>
+                        <a href="cart">
+                            <div class="updsection_1_2_7_1" style="background-color: rgb(15, 184, 15);">
+                                GO TO CART
+                            </div>
+                        </a>
+                        <% } else { %>
+                            
+                            <div class="updsection_1_2_7_1" onclick="addToCart('<%= data._id %>')" id="addToCartBtn">
+                                ADD TO CART
+                            </div>
+                            <a href="cart" id="goToCartBtn" style="display: none;">
+                                <div class="updsection_1_2_7_1" style="background-color: rgb(15, 184, 15);">
+                                    GO TO CART
+                                </div>
+                            </a>
+
+                            <% } %>
+                            <% } else { %>
+                                <a href="login?page=productDetails&id=<%= data._id %>">
+                                    <div class="updsection_1_2_7_1">
+                                        ADD TO CART
+                                    </div>
+                                </a>
+                                <% } %>
+                                <a href="addToWishlist?id=<%= data._id %>">
+                                    <div class="updsection_1_2_7_2">
+                                        WISHLIST
+                                    </div>
+                                </a>
+                </div>
+                <div class="updsection_1_2_8">
+                    RATINGS
+                </div>
+                <div class="updsection_1_2_9">
+                    <div class="updsection_1_2_9_1">
+                        <div class="updsection_1_2_9_1_1">
+                            4.2 &#9733
+                        </div>
+                        <div class="updsection_1_2_9_1_2">
+                            18k vefied buyers
+                        </div>
+                    </div>
+                    <div class="updsection_1_2_9_2">
+                        <div class="updsection_1_2_9_2_1">
+                            <div class="updsection_1_2_9_2_1_1">
+                                5&#9733
+                            </div>
+                            <div class="updsection_1_2_9_2_1_2">
+                                <div class="updsection_1_2_9_2_1_2_1" style="width: 50%; background-color: green;">
+                                </div>
+                            </div>
+                            <div class="updsection_1_2_9_2_1_3">
+                                2344
+                            </div>
+                        </div>
+                        <div class="updsection_1_2_9_2_1">
+                            <div class="updsection_1_2_9_2_1_1">
+                                4&#9733
+                            </div>
+                            <div class="updsection_1_2_9_2_1_2">
+                                <div class="updsection_1_2_9_2_1_2_1" style="width: 50%; background-color: lightgreen;">
+
+                                </div>
+                            </div>
+                            <div class="updsection_1_2_9_2_1_3">
+                                2344
+                            </div>
+                        </div>
+                        <div class="updsection_1_2_9_2_1">
+                            <div class="updsection_1_2_9_2_1_1">
+                                3&#9733
+                            </div>
+                            <div class="updsection_1_2_9_2_1_2">
+                                <div class="updsection_1_2_9_2_1_2_1" style="width: 50%; background-color: skyblue;">
+
+                                </div>
+                            </div>
+                            <div class="updsection_1_2_9_2_1_3">
+                                2344
+                            </div>
+                        </div>
+                        <div class="updsection_1_2_9_2_1">
+                            <div class="updsection_1_2_9_2_1_1">
+                                2&#9733
+                            </div>
+                            <div class="updsection_1_2_9_2_1_2">
+                                <div class="updsection_1_2_9_2_1_2_1" style="width: 50%; background-color: orange;">
+
+                                </div>
+                            </div>
+                            <div class="updsection_1_2_9_2_1_3">
+                                2344
+                            </div>
+                        </div>
+                        <div class="updsection_1_2_9_2_1">
+                            <div class="updsection_1_2_9_2_1_1">
+                                1&#9733
+                            </div>
+                            <div class="updsection_1_2_9_2_1_2">
+                                <div class="updsection_1_2_9_2_1_2_1" style="width: 50%; background-color: red;">
+
+                                </div>
+                            </div>
+                            <div class="updsection_1_2_9_2_1_3">
+                                2344
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+<script>
+    const xhr = new XMLHttpRequest;
+    currentSize = 'S';
+    function addToCart(productId) {
+        let sizeValue = document.getElementById('size').value;
+        if (sizeValue != 'none') {
+            xhr.open('GET', 'addToCart?id=' + productId + '&size=' + sizeValue, true);
+            xhr.send();
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    let data = xhr.responseText;
+                    document.getElementById('sizeError').style.display = 'none';
+                    document.getElementById('sizeWrapper').style.display = 'none';
+                    document.getElementById('goToCartBtn').style.display = '';
+                    document.getElementById('addToCartBtn').style.display = 'none';
+                    document.getElementById('successMessagePopper').style.opacity = '1';
+                    document.getElementById('successMessagePopper').style.transform = 'translate(-50%,0%)';
+                    setTimeout(popper, 1000);
+                }
+            }
+        }
+        else {
+            document.getElementById('sizeError').style.display = '';
+        }
+    }
+    function sizeSelect(size) {
+        document.getElementById('size').value = size;
+        document.getElementById(currentSize).style.backgroundColor = 'white';
+        document.getElementById(size).style.backgroundColor = '#0197A6';
+        currentSize = size;
+    }
+
+    function popper() {
+        document.getElementById('successMessagePopper').style.opacity = '0';
+        document.getElementById('successMessagePopper').style.transform = 'translate(-50%,-100%)';
+    }
+
+    let zoomFlag = true;
+    function imageZoom(event,id){
+        if(zoomFlag){
+            var rect = event.target.getBoundingClientRect();
+            let x = event.clientX-rect.left;
+            let y = event.clientY-rect.top;;
+            document.getElementById(id).style.transform='scale(2)';
+            document.getElementById(id).style.transformOrigin=x+'px '+y+'px';
+            zoomFlag=false;
+        }
+        else{
+            document.getElementById(id).style.transform='scale(1)';
+            zoomFlag=true;
+        }
+    }
+</script>

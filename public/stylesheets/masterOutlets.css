@@ -1,0 +1,54 @@
+.mosection_1 {
+    border: 1px solid;
+    width: fit-content;
+    width: 90vw;
+    height: fit-content;
+    margin: auto;
+    margin-top: 80px;
+}
+
+    .mosection_1_1 {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: fit-content;
+        min-height: 50px;
+        align-items: center;
+        border: 1px solid gray;
+    }
+        .mosection_1_1_1 {
+            width: 35%;
+            min-width: 300px;
+            text-align: center;
+            padding: 5px 0px 5px 0px;
+        }
+        .mosection_1_1_2 {
+            width: 15%;
+            min-width: 150px;
+            text-align: center;
+            padding: 5px 0px 5px 0px;
+        }
+
+        .mosection_1_1_2_1 {
+            background-color: red;
+            width: fit-content;
+            margin: auto;
+            padding: 2px 7px 2px 7px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .mosection_1_1_3 {
+            width: 20%;
+            text-align: center;
+            min-width: 240px;
+            padding: 5px 0px 5px 0px;
+        }
+            .mosection_1_1_3_1 {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding-left: 1vw;
+                padding-right: 1vw;
+                margin-top: -4px;                
+            }

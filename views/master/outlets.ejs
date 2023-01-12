@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <%- include('../partials/subHeaderMaster'); %>
+    <div class="mosection_1">
+        <div class="mosection_1_1">
+            <div class="mosection_1_1_1">
+                OUTLET
+            </div>
+            <div class="mosection_1_1_2">
+                ORDERS
+            </div>
+            <div class="mosection_1_1_2">
+                STATUS
+            </div>
+            <div class="mosection_1_1_2">
+                COMPLAINTS
+            </div>
+            <div class="mosection_1_1_3">
+                ACTIONS
+            </div>
+        </div>
+        <div class="mosection_1_1">
+            <% data.forEach(function(data){ %>
+            <div class="mosection_1_1_1">
+                <%= data.outletName %>
+            </div>
+            <div class="mosection_1_1_2">
+                12423
+            </div>
+            <div class="mosection_1_1_2">
+                <% if(data.status){ %>
+                    <div class="fontGreen">ACTIVE<br></div>
+                    <% } else { %>
+                        <div class="fontRed">NOT-ACTIVE<br></div>
+                    <% } %> 
+            </div>
+            <div class="mosection_1_1_2">
+                <div class="mosection_1_1_2_1">
+                    2
+                </div>
+            </div>
+            <div class="mosection_1_1_3">
+                <div class="mosection_1_1_3_1">
+                    <% if(data.status){ %>
+                        <a href="blockOutlet?id=<%= data._id %>">
+                            <div class="ButtonFixed redButtonFixed">BLOCK</div>
+                        </a>
+                    <% } else { %>
+                        <a href="unblockOutlet?id=<%= data._id %>">
+                            <div class="ButtonFixed greenButtonFixed">UNBLOCK</div>
+                        </a>
+                    <% } %>
+                    <a href="outletDetails?id=<%= data._id %>">
+                    <div class="ButtonFixed blueButtonFixed">
+                        DETAILS
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <% }) %> 
+        </div>
+    </div>
+   
+
+</body>
+</html>

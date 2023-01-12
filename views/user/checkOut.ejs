@@ -1,0 +1,308 @@
+<link rel="stylesheet" href="/stylesheets/checkOut.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<body>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AXOVAYssrJz7fpWLXJegeZGd7F_ejZIgWe9xRCZ2PsHKcfY4OqKwygYZFPHgQsYSjw8IT4cvn2tHtdWR"></script>
+    <div class="cosect_1">
+        <form method="POST" action="placeOrder" onsubmit="return placeOrder()">
+            <div class="cosect_1_1">
+                SELECT AN ADDRESS: <div class="errorMessage" id="addressValueError"></div>
+            </div>
+            <div class="cosect_1_2">
+                <input value="none" type="hidden" id="addressValue" name="addressValue">
+                <% data.address.forEach((data)=> { %>
+                    <div class="cosect_1_2_1" id="<%= data.addressType %>"
+                        onclick="addressSelect('<%= data.addressType %>')">
+                        <%= data.addressType %>
+                    </div>
+                    <% }) %>
+                        <div class="cosect_1_2_1" id="newAddress" onclick="addressSelect('newAddress')">
+                            ADD NEW ADDRESS
+                        </div>
+            </div>
+            <div class="cosect_1_4" id="addAddressForm">
+                <div class="errorMessage" id="newAddressError"></div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        Full Name:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" name="fullName" id="fullName">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        Mobile Number:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="mobileNumber" name="mobileNumber">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        Pincode:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="pincode" name="pincode">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        House number/name:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="houseNumber" name="houseNumber">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        Town:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="town" name="town">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        District:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="district" name="district">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        State:
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="state" name="state">
+                    </div>
+                </div>
+                <div class="cosect_1_4_1">
+                    <div class="cosect_1_4_1_1">
+                        Address type(home/work):
+                    </div>
+                    <div class="cosect_1_4_1_2">
+                        <input class="cosect_1_4_1_2_1" type="text" id="addressType" name="addressType">
+                    </div>
+                </div>
+            </div>
+            <div class="cosect_1_1">
+                PAYMENT METHOD: <div class="errorMessage" id="paymentValueError"></div>
+            </div>
+            <div class="cosect_1_2">
+                <input value="none" type="hidden" id="paymentValue" name="paymentValue">
+                <div class="cosect_1_2_1" id="upi" onclick="paymentSelect('upi')">
+                    RAZORPAY
+                </div>
+                <div class="cosect_1_2_1" id="paypal" onclick="paymentSelect('paypal')">
+                    PAYPAL
+                </div>
+                <div class="cosect_1_2_1" id="cod" onclick="paymentSelect('cod')">
+                    CASH ON DELIVERY
+                </div>
+            </div>
+            <div class="cosect_1_5" style="display: none;" id="upiForm"></div>
+            <div class="cosect_1_5" id="paypalForm">
+                <div id="paypal_buttons"></div>
+            </div>
+            <div class="cosect_1_5" id="codForm">
+                <div class="cosect_1_5_1">
+                    Amount to be paid on delivery:
+                </div>
+                <div class="cosect_1_5_2">
+                    Rs. <%= data.cartTotal.toFixed(2)%>
+                </div>
+            </div>
+            <button class="greenButton" style="margin-top: 30px;">
+                PLACE ORDER
+            </button>
+        </form>
+    </div>
+    <br><br><br><br><br>
+</body>
+
+<script>
+
+    paypal
+        .Buttons({
+            createOrder: function () {
+                let addressType = document.getElementById('addressValue').value;
+                let address = {};
+                if (addressType == 'newAddress') {
+                    address.newAddress = true;
+                    address.fullName = document.getElementById('fullName').value;
+                    address.mobileNumber = document.getElementById('mobileNumber').value;
+                    address.pincode = document.getElementById('pincode').value;
+                    address.houseNumber = document.getElementById('houseNumber').value;
+                    address.town = document.getElementById('town').value;
+                    address.district = document.getElementById('district').value;
+                    address.state = document.getElementById('state').value;
+                    address.addressType = document.getElementById('addressType').value;
+                } else {
+                    address.newAddress = false;
+                    address.addressType = addressType;
+                }
+                return fetch("/create-order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        address
+                    }),
+                })
+                    .then(res => {
+                        if (res.ok) return res.json()
+                        return res.json().then(json => Promise.reject(json))
+                    })
+                    .then(({ id }) => {
+                        return id
+                    })
+                    .catch(e => {
+                        console.error(e.error)
+                    })
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    window.location.href = 'orderSuccess';
+                })
+            },
+        })
+        .render("#paypal_buttons")
+
+        </script>
+        <script>
+        
+
+    currentOptionAddress = 'addressValue';
+    currentOptionPayment = 'paymentValue';
+    let count;
+    function addressSelect(option) {
+        document.getElementById(currentOptionAddress).style.background = 'white';
+        document.getElementById(currentOptionAddress).style.color = '#0197A6';
+        document.getElementById(option).style.backgroundColor = '#0197A6';
+        document.getElementById(option).style.color = 'white';
+        currentOptionAddress = option;
+        if (option == 'newAddress') {
+            document.getElementById('addAddressForm').style.opacity = '1';
+            document.getElementById('addAddressForm').style.height = '470px';
+            document.getElementById('addressValue').value = 'newAddress';
+        }
+        else {
+            document.getElementById('addAddressForm').style.opacity = '0';
+            document.getElementById('addAddressForm').style.height = '0';
+            document.getElementById('addressValue').value = option;
+        }
+    }
+    function paymentSelect(option) {
+        let addressValue = document.getElementById('addressValue').value;
+        let flag = false;
+        if (addressValue == 'none') {
+            document.getElementById('addressValueError').innerHTML = 'Please select an address';
+            flag = false;
+        }
+        else if(addressValue == 'newAddress'){
+            newAddressValidation();
+            if(addressAdded){
+                flag = true;
+            }
+        }
+        else{
+            flag = true;
+        }
+        if(flag) {
+            if (option == 'upi') {
+                document.getElementById(currentOptionPayment).style.backgroundColor = 'white';
+                document.getElementById(currentOptionPayment).style.color = '#0197A6';
+                document.getElementById(option).style.backgroundColor = '#0197A6';
+                document.getElementById(option).style.color = 'white';
+                document.getElementById('codForm').style.opacity = '0';
+                document.getElementById('codForm').style.height = '0';
+                document.getElementById('paypalForm').style.opacity = '0';
+                document.getElementById('paypalForm').style.height = '0';
+                document.getElementById('paymentValue').value = 'upi';
+
+            }
+            else if (option == 'paypal') {
+                document.getElementById(currentOptionPayment).style.backgroundColor = 'white';
+                document.getElementById(currentOptionPayment).style.color = '#0197A6';
+                document.getElementById(option).style.backgroundColor = '#0197A6';
+                document.getElementById(option).style.color = 'white';
+                document.getElementById('codForm').style.opacity = '0';
+                document.getElementById('codForm').style.height = '0';
+                document.getElementById('paypalForm').style.opacity = '1';
+                document.getElementById('paypalForm').style.height = '93px';
+                document.getElementById('paymentValue').value = 'upi';
+            }
+            else if (option == 'cod') {
+                document.getElementById(currentOptionPayment).style.backgroundColor = 'white';
+                document.getElementById(currentOptionPayment).style.color = '#0197A6';
+                document.getElementById(option).style.backgroundColor = '#0197A6';
+                document.getElementById(option).style.color = 'white';
+                document.getElementById('paypalForm').style.opacity = '0';
+                document.getElementById('paypalForm').style.height = '0';
+                document.getElementById('codForm').style.opacity = '1';
+                document.getElementById('codForm').style.height = '80px';
+                document.getElementById('paymentValue').value = 'cod';
+            }
+            currentOptionPayment = option;
+        }
+    }
+    let addressAdded = false;
+    function newAddressValidation() {
+        let fullName = document.getElementById('fullName').value;
+        let mobileNumber = document.getElementById('mobileNumber').value;
+        let Pincode = document.getElementById('pincode').value;
+        let houseNumber = document.getElementById('houseNumber').value;
+        let town = document.getElementById('town').value;
+        let district = document.getElementById('district').value;
+        let state = document.getElementById('state').value;
+        let addressType = document.getElementById('addressType').value;
+        if (fullName.length == 0 || mobileNumber.length == 0 || Pincode == 0 || houseNumber == 0 || town == 0 || district == 0 || state == 0 || addressType == 0) {
+            document.getElementById('newAddressError').innerHTML = 'Please fill the details';
+            addressAdded = false;
+        }
+        else {
+            document.getElementById('newAddressError').innerHTML = '';
+            addressAdded = true;
+            count++;
+        }
+    }
+
+    function placeOrder() {
+        count = 0;
+        let addressValue = document.getElementById('addressValue').value;
+        let paymentValue = document.getElementById('paymentValue').value;
+        if (addressValue == 'newAddress') {
+            document.getElementById('addressValueError').innerHTML = '';
+            newAddressValidation();
+        }
+        else if (addressValue == 'none') {
+            document.getElementById('addressValueError').innerHTML = 'Please select an address';
+        }
+        else {
+            document.getElementById('addressValueError').innerHTML = '';
+            count++;
+        }
+
+        if (paymentValue == 'cod') {
+            document.getElementById('paymentValueError').innerHTML = '';
+            count++;
+        }
+        else if (paymentValue == 'paypal') {
+            document.getElementById('addressValueError').innerHTML = 'Please select an address';
+        }
+        else {
+            document.getElementById('paymentValueError').innerHTML = 'Please select a payment method';
+        }
+        if (count == 2) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+</script>

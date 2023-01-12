@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/report.css">
+<body>
+    <div class="report_1">
+        <div class="report_1_1">
+            SALES REPORT
+        </div>
+        <div class="report_1_2">
+            <%= data.fromDate %> to <%= data.toDate %>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total Outlets:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalOutlets %>
+            </div>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total products:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalOrders %>
+            </div>
+        </div>
+        <div class="report_1_3">
+            <div class="report_1_3_1">
+                Total Quantities Sold:
+            </div>
+            <div class="report_1_3_2">
+                <%= data.totalQuantity %>
+            </div>
+        </div>
+        <div class="report_1_4">
+            <div class="report_1_4_1">
+                <div class="report_1_4_1_1">
+                    OUTLET
+                </div>
+                <div class="report_1_4_1_2">
+                    PRODUCTS
+                </div>
+                <div class="report_1_4_1_2">
+                    QUANTITIES
+                </div>
+            </div>
+            <% data.data.forEach((data) => { %>
+            <div class="report_1_4_2">
+                <div class="report_1_4_2_1">
+                    <%= data._id %>
+                </div>
+                <div class="report_1_4_2_2">
+                    <%= data.orders %>
+                </div>
+                <div class="report_1_4_2_2">
+                    <%= data.quantity %>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <div class="ButtonFixed greenButtonFixed marginAuto">PRINT</div>
+    </div>
+</body>

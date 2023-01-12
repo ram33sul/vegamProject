@@ -1,0 +1,406 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+button {
+  border: none;
+}
+input {
+  outline: none;
+}
+body{
+  overflow-x: hidden;
+}
+.dropDownArrow {
+  border-top: 8px solid white;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin-left: 8px;
+  transform: translateY(6px);
+  opacity: 0.6;
+}
+.dropDownArrowGreen{
+  border-top: 8px solid green;
+}
+.dropDownArrowBlack{
+  border-top: 8px solid black;
+}
+.dropLeftArrow {
+  border-right: 8px solid black;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin-left: 0px;
+  height: 0px;
+  width: 0px;
+  transform: translateY(5px);
+  opacity: 0.6;
+}
+.selectOption {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+  .selectOption:hover {
+    background-color: gray !important;
+    color: white !important;
+  }
+  .selectOption:active {
+    transform:scale(1.2);
+  }
+.blueButton {
+  background-color:#0197A6;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #0197A6;
+  padding: 5px 15px 5px 15px;
+  width: fit-content;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+}
+  .blueButton:hover {
+    background-color: white;
+    color: #0197A6;
+  }
+  .blueButton:active {
+    transform: scale(1.2);
+  }
+.greenButton {
+  background-color:green;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid green;
+  padding: 5px 15px 5px 15px;
+  width: fit-content;
+  margin-top: 5px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+}
+  .greenButton:hover {
+    background-color: white;
+    color: green;
+  }
+  .greenButton:active {
+    transform: scale(1.2);
+  }
+
+  .redButton {
+    background-color:red;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid red;
+    padding: 5px 15px 5px 15px;
+    width: fit-content;
+    margin-top: 5px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+  }
+    .redButton:hover {
+      background-color: white;
+      color: red;
+    }
+    .redButton:active {
+      transform: scale(1.2);
+    }
+  
+.alignRight {
+  margin-left: auto;
+}
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+  align-self: center;
+  text-shadow:
+   -1px -1px 0 white,  
+    1px -1px 0 white,
+    -1px 1px 0 white,
+     1px 1px 0 white;
+}
+.successMessage {
+  color: green;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+  align-self: center;
+  text-shadow:
+   -1px -1px 0 white,  
+    1px -1px 0 white,
+    -1px 1px 0 white,
+     1px 1px 0 white;
+}
+.ButtonFixed {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0px 5px 0px;
+  width: 100px;
+  text-align: center;
+  margin-top: 5px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.ButtonFixed:active {
+  transform: scale(1.2);
+}
+.greenButtonFixed {
+  background-color:green;
+  border: 1px solid green;
+}
+.greenButtonFixed:hover {
+  color: green;
+  background-color: white;
+}
+.redButtonFixed {
+  background-color: red;
+  border: 1px solid red;
+}
+.redButtonFixed:hover {
+  color: red;
+  background-color: white;
+}
+.blueButtonFixed {
+  background-color: #0197A6;
+  border: 1px solid #0197A6;
+}
+.blueButtonFixed:hover {
+  color: #0197A6;
+  background-color: white;
+}
+.fontGreen {
+  color: green;
+}
+.fontRed {
+  color: red;
+}
+.fontWhite {
+  color: white;
+}
+.fontBlue {
+  color: #0197A6;
+}
+.fontBold {
+  font-weight: bold;
+}
+.padding10 {
+  padding: 10px;
+}
+
+.uploadImage {
+  width: fit-content;
+  height: fit-content;
+}
+
+.uploadImage ._1 {
+  display: flex;
+}
+
+.display_flex {
+  display: flex;
+}
+.uploadImage ._1 ._1_1 {
+  border: 1px solid gray;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  color: black;
+  font-size: 30px;
+  color: red;
+  text-align: center;
+  align-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.uploadImage ._2 {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.uploadImage ._2_1 {
+  width: fit-content;
+  border: 1px solid gray;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.border_2px_solid_white {
+  border: 2px solid white;
+}
+.borderTransparent {
+  border-color: transparent;
+}
+
+.successMessagePopper {
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(54, 188, 54);
+  font-size: 15px;
+  color: white;
+  position: fixed;
+  z-index: 11;
+  top:0;
+  left: 50vw; 
+  transform: translate(-50%,-100%);
+  padding: 10px 30px 10px 30px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-weight: bold;
+  transition: all 0.1s;
+  box-shadow: 0px 0px 10px rgb(100,100,100);
+  opacity: 0;
+}
+
+.noItemMsg {
+  color: red;
+  font-weight: bolder;
+  font-size: 20px;
+  position: absolute;
+  margin-top: 100px;
+  width: fit-content;
+  max-width: 90vw;
+  height: fit-content;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
+.opacity3 {
+  opacity: 0.3;
+}
+
+.backgroundBlue{
+  background-color: #0197A6;
+}
+
+.cancelPop {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  margin: auto;
+  position: absolute;
+  background-color: rgba(256, 256, 256, 0.5);
+  top: 0;
+  right: 0;
+}
+  .cancelPop_1{
+    width: fit-content;
+    margin-left: 50vw;
+    margin-top: 30vh;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    padding: 10px 25px 10px 25px;
+  }
+
+.cropCanvas {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+.imageToBeCropped{
+  width: 700px;
+  margin-left: 50vw;
+  transform: translateX(-50%);
+  margin-top: 100px;
+}
+
+.table{
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid rgb(230,230,230);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 50px;
+}
+.tableHeader{
+  width: 1300px;
+  max-width: 95vw;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: grey;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+.tableHeaderContent {
+  width: 20%;
+  height: fit-content;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+.tableRow{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  color: black;
+  font-size: 17px;
+  border-top: 1px solid silver;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tableRow:hover{
+  background-color: rgb(230, 230, 230);
+}
+
+.tableContent{
+  display: flex;
+  width: 20%;
+  height: fit-content;
+  padding: 10px;
+  justify-content: center;
+}
+.tableContentImage{
+  height: 70px;
+  width: 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+}
+.wrap{
+  height: fit-content;
+  width: 100%;
+}
+
+.marginAuto{
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+

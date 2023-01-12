@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/Login.css' />
+    <title>Login</title>
+</head>
+<body>
+    <div class="section_1 adminLogin">
+        <div class="section_1_1">
+            <div class="section_1_1_1">
+
+            </div>
+            <div class="section_1_1_2">
+                <div class="section_1_1_2_1">
+                    GO BACK
+                </div>
+            </div>
+        </div>
+        <div class="section_1_2">
+            <form name="loginForm" method="post" action="/admin/login">
+                <div class="section_1_2_1">
+                    LOGIN
+                </div>
+                <div class="sectionErrorMessage">
+                    <%= message %>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="text" class="section_1_2_2_1" name="email" id="email" onblur="inputBlur(0)" onclick="inputClick(0)">
+                    <div class="section_1_2_2_2">
+                        Email
+                    </div>
+                </div>
+                <div class="section_1_2_2">
+                    <input type="password" class="section_1_2_2_1" name="password" id="password" onblur="inputBlur(1)" onclick="inputClick(1)">
+                    <div class="section_1_2_2_2">
+                        Password
+                    </div>
+                </div>
+                <button type="submit" class="section_1_2_3">
+                    CONTINUE
+                </button>
+                <div class="section_1_2_4">
+                    OR
+                </div>
+                <a href="/admin/signup">
+                <div class="section_1_2_3">
+                    CREATE NEW ACCOUNT
+                </div>
+                </a>
+                <div class="section_1_2_5">
+                    Forgot Password?
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function inputClick(id){
+            document.getElementsByClassName('section_1_2_2_2')[id].style.opacity='1';
+            document.getElementsByClassName('section_1_2_2_2')[id].style.fontSize='14px';
+            document.getElementsByClassName('section_1_2_2_2')[id].style.top='-20px';
+        }
+        function inputBlur(id){
+            if(document.getElementsByClassName('section_1_2_2_1')[id].value.length==0){
+                document.getElementsByClassName('section_1_2_2_2')[id].style.opacity='0.7';
+                document.getElementsByClassName('section_1_2_2_2')[id].style.fontSize='17px';
+                document.getElementsByClassName('section_1_2_2_2')[id].style.top='0';
+            }
+            else{
+                document.getElementsByClassName('section_1_2_2_2')[id].style.color='lightgreen';
+            }
+        }
+    </script>
+</body>
+</html>

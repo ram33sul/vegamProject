@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="/stylesheets/coupons.css">
+
+<div class="dash_1">
+    <div class="dash_1_1">
+        <div class="dash_1_1_1" style="background-color: white;color: green;">
+            INDEX
+        </div>
+        <div class="dash_1_1_1">
+            REPORT
+        </div>
+        <a href="coupons">
+            <div class="dash_1_1_1">
+                COUPONS
+            </div>
+        </a>
+        <div class="dash_1_1_1">
+            OFFERS
+        </div>
+    </div>
+    <div class="dash_1_2" style="width: 70%;">
+
+
+        <a href="addCoupons">
+            <div class="greenButton" style="margin:auto;margin-top: 50px;">
+                ADD NEW COUPON
+            </div>
+        </a>
+        <div class="table">
+            <div class="tableHeader">
+                <div class="tableHeaderContent">
+                    NAME
+                </div>
+                <div class="tableHeaderContent">
+                    TYPE
+                </div>
+                <div class="tableHeaderContent">
+                    VALUE
+                </div>
+                <div class="tableHeaderContent">
+                    STATUS
+                </div>
+                <div class="tableHeaderContent">
+                    ACTION
+                </div>
+            </div>
+            <% data.forEach((data)=> {
+                let status;
+                if(data.status){
+                status = 'ACTIVE';
+                } else {
+                status = 'NON-ACTIVE';
+                }; %>
+                <div class="tableRow">
+                    <div class="tableContent">
+                        <%= data.name %>
+                    </div>
+                    <div class="tableContent">
+                        <%= data.type %>
+                    </div>
+                    <div class="tableContent">
+                        <%= data.value %>
+                    </div>
+                    <div class="tableContent">
+                        <%= status %>
+                    </div>
+                    <% if(data.status){ %>
+                        <a href="blockCoupon?id=<%= data._id %>">
+                            <div class="ButtonFixed redButtonFixed" style="margin-left: 80px;">
+                                BLOCK
+                            </div>
+                        </a>
+                        <% } else { %>
+                            <a href="unblockCoupon?id=<%= data._id %>">
+                                <div class="ButtonFixed greenButtonFixed">
+                                    UNBLOCK
+                                </div>
+                            </a>
+                            <% } %>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+</div>
