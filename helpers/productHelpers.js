@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectId;
 var Mongo = MongoClient.connect('mongodb://localhost:27017/example');
-const { resolve } = require('express-hbs/lib/resolver');
+// const { resolve } = require('express-hbs/lib/resolver');
 const bcrypt = require('bcrypt');
 const { response } = require('../app');
 const { ObjectId } = require('mongodb');

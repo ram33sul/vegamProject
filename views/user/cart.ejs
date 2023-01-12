@@ -295,20 +295,22 @@
                                                 }
                                             </style>
                                             <div class="couponsList" style="display: none;" id="couponList">
-                                                <% data.couponsData.forEach((data2) => { %>
+                                                <% data.couponsData?.forEach((data2) => { %>
+                                                    <% if(data2.couponDetails.length != 0){ %>
                                                     <div class="couponsList1">
                                                         <div class="couponsList11">
-                                                            <%= data2.couponDetails[0].name %>
+                                                            <%= data2.couponDetails[0]?.name %>
                                                         </div>
                                                         <div class="couponsList12">
-                                                            <%= data2.couponDetails[0].value %> Rs. on minimum spent of <%= data2.couponDetails[0].minSpent %> for <%= data2.couponDetails[0].outletName %> products.
+                                                            <%= data2.couponDetails[0]?.value %> Rs. on minimum spent of <%= data2.couponDetails[0]?.minSpent %> for <%= data2.couponDetails[0]?.outletName %> products.
                                                         </div>
-                                                        <% if(data.appliedCouponData.name!=data2.couponDetails[0].name){ %>
-                                                        <div class="couponsList13" id="applyCouponBtn<%= data2.couponDetails[0]._id %>" onclick="applyCoupon('<%= data2.couponDetails[0]._id %>','<%= data2.couponDetails[0].name %>','<%= data2.couponDetails[0].value %>')"> 
+                                                        <% if(data.appliedCouponData.name!=data2.couponDetails[0]?.name){ %>
+                                                        <div class="couponsList13" id="applyCouponBtn<%= data2.couponDetails[0]?._id %>" onclick="applyCoupon('<%= data2.couponDetails[0]?._id %>','<%= data2.couponDetails[0]?.name %>','<%= data2.couponDetails[0]?.value %>')"> 
                                                             APPLY
                                                         </div>
                                                         <% } %>
                                                     </div>
+                                                    <% } %>
                                                     <% }) %>
                                             </div>
 			            			</div><!-- End .cart-discount -->

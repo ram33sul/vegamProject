@@ -12,10 +12,12 @@
             <div class="cosect_1_2">
                 <input value="none" type="hidden" id="addressValue" name="addressValue">
                 <% data.address.forEach((data)=> { %>
-                    <div class="cosect_1_2_1" id="<%= data.addressType %>"
-                        onclick="addressSelect('<%= data.addressType %>')">
-                        <%= data.addressType %>
+                    <% if(data){ %>
+                    <div class="cosect_1_2_1" id="<%= data?.addressType %>"
+                        onclick="addressSelect('<%= data?.addressType %>')">
+                        <%= data?.addressType %>
                     </div>
+                    <% } %>
                     <% }) %>
                         <div class="cosect_1_2_1" id="newAddress" onclick="addressSelect('newAddress')">
                             ADD NEW ADDRESS
@@ -187,7 +189,7 @@
         currentOptionAddress = option;
         if (option == 'newAddress') {
             document.getElementById('addAddressForm').style.opacity = '1';
-            document.getElementById('addAddressForm').style.height = '470px';
+            document.getElementById('addAddressForm').style.height = '520px';
             document.getElementById('addressValue').value = 'newAddress';
         }
         else {

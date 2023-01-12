@@ -346,9 +346,8 @@ module.exports = {
                 console.log(formData);
                 let data = await client.db('project1').collection('users').find({ '_id': objectId(userId) }).toArray();
                 if (formData.addressValue == 'newAddress') {
-                    delete formData.address.newAddress;
-                    await client.db('project1').collection('users').updateOne({ '_id': objectId(userId) }, { $push: { 'address': formData.address } });
-                    address = formData.address;
+                    await client.db('project1').collection('users').updateOne({ '_id': objectId(userId) }, { $push: { 'address': formData } });
+                    address = formData;
                 } else {
                     let index = data[0].address.findIndex(data => data.addressType == formData.addressValue);
                     address = data[0].address[index];
